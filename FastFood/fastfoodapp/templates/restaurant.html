@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'fastfoodapp/css/restaurant.css' %}"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    
+
+    
+    <style>
+        body{
+    
+    background-color:rgba(255, 251, 233, 0.719) ;
+}
+img{
+    margin: 5%;
+    margin-left:10%;
+width:300px;
+height:300px;
+}
+.btn{
+    float:left;
+    margin: 10%;
+    margin-left:30%;
+    width: 150px;
+    height: 50px;
+    background-color: bisque;
+    font-weight: bold;
+}
+a{
+}
+#ord{
+    margin-left:2%;
+    color: black;
+}
+p,h3{
+    text-align:left;
+}
+
+#pro:hover{
+    transform: scale(1.25);
+    transition:all 3s ;
+}
+.centered{
+    position:absolute;
+    top:80%;
+    left:30%;
+    font-size: 60px;
+    font-style:initial;
+}
+.cont{
+    position:relative;
+    text-align:center;
+    color:white;
+}
+    
+    </style>
+    <script>
+    const menuBtn = document.querySelector(".menu-icon span");
+    const searchBtn = document.querySelector(".search-icon");
+    const cancelBtn = document.querySelector(".cancel-icon");
+    const items = document.querySelector(".nav-items");
+    const form = document.querySelector("form");
+    menuBtn.onclick = ()=>{
+      items.classList.add("active");
+      menuBtn.classList.add("hide");
+      searchBtn.classList.add("hide");
+      cancelBtn.classList.add("show");
+    }
+    cancelBtn.onclick = ()=>{
+      items.classList.remove("active");
+      menuBtn.classList.remove("hide");
+      searchBtn.classList.remove("hide");
+      cancelBtn.classList.remove("show");
+      form.classList.remove("active");
+      cancelBtn.style.color = "#ff3d00";
+    }
+    searchBtn.onclick = ()=>{
+      form.classList.add("active");
+      searchBtn.classList.add("hide");
+      cancelBtn.classList.add("show");
+    }
+  </script>
+
+</head>
+<body>
+    <div>
+        <nav>
+            <div class="menu-icon">
+      <span class="fas fa-bars"></span></div>
+      <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none;">
+        Otlob</a>
+      <div class="nav-items">
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Foods</a></li>
+      <li><a href="{% url 'Restaurant' %}">Restaurant</a></li>
+      <li><a href="#">Feedback</a></li>
+      <li><a href="#">Log In</a></li>
+      <li><a href="{% url 'TypePage' %}">Log Up</a></li>
+      </div>
+      <div class="search-icon">
+      <span class="fas fa-search"></span></div>
+      <div class="cancel-icon">
+      <span class="fas fa-times"></span></div>
+      <form action="#">
+              <input type="search" class="search-data" placeholder="Search" required>
+              <button type="submit" class="fas fa-search"></button>
+            </form>
+      </nav>
+      
+        <div class="cont" ">
+            <img src="../static/fastfoodapp/images/img/pizza2.jpeg" alt="pizza.jpeg" style="width: 100%; height: 100%;margin: 0px;">
+            <div class="centered">RESTURANT FOODS</div>
+        </div>
+        <div class="row" style="background-color:cornsilk;">
+            <div class="col-sm-4">
+            <button type="button" class="btn btn-outline-dark "><a href="#fo" style ="text-decoration-line: none; "> ADD MEAL </a></button>
+            </div>
+    
+            <div class="col-sm-4" >
+                <button type="button" class="btn btn-outline-dark ">DELETE MEAL</button>
+            </div>
+    
+            <div class="col-sm-4">
+                <button type="button" class="btn btn-outline-dark ">OFFERS</button>
+            </div>
+    
+        </div> 
+        
+        <div class="container" style="background-color:rgb(255, 255, 245);">
+
+            <div class="row" style="margin-top: 2%;" >
+
+                <div  class=" col-sm-6">
+                    <img id="pro" src="../static/fastfoodapp/images/img/perger1.jpeg" alt="perger1.jpeg">
+                    <h3>CHICKEN BURGERS</h3>
+                    <p>Water spinach arugula pea tatsoi aubergine spring onion.</p>
+                    <button id="ord" type="button" class="btn btn-outline-success">ORDER</button>
+              
+                </div>
+        
+                <div  class="col-sm-6">
+                    <img id="pro" src="../static/fastfoodapp/images/img/perger2.jpeg" alt="perger2.jpeg">
+                    <h3>BEEF BURGERS</h3>
+                    <p>Beetroot water spinach okra water chestnut ricebean pea.</p>
+                    <button id="ord" type="button" class="btn btn-outline-success">ORDER</button>
+                </div>
+            </div>
+            
+            <div class="row" style="margin-top: 2%; background-color: blanchedalmond; text-align: center; padding: 1%;" >
+                <div  class=" col-sm-12">
+                    <h1>ADD MEAL</h1>
+                </div>
+            </div>
+
+            <form id="fo" method="POST"style="margin-top: 2%;" >
+                <label>Item_Name</label>
+                <input type="text" class="form-control" name="item_name" id="id_item_name">
+                <br>
+                <label>Item_Kind</label>
+                <input type="text" class="form-control" name="item_kind" id="id_item_kind" >
+                <br>
+                <label>Item_Size</label>
+                <input type="text" class="form-control" name="item_size" id="id_item_size" >
+                <br>
+                <button type="submit" class="btn-lg btn-success">ADD</button>
+                
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

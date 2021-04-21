@@ -52,6 +52,7 @@ class FoodItem(models.Model):
 
 
 
+
 class Add(models.Model):
     R_id = models.ForeignKey(Restaurant(), default=1 ,on_delete= models.SET_DEFAULT)
     F_id = models.ForeignKey(FoodItem(), default=1 ,on_delete= models.SET_DEFAULT)
