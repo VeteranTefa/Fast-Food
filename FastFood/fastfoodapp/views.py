@@ -12,3 +12,5 @@ def typepage(request):
 def restaurant_Reg(request):
     return render(request,'regestrationforrestuarnt.html',{})
 
+def restaurant(request):
+    return render(request,'restaurant.html',{})
