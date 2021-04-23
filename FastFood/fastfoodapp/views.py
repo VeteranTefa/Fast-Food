@@ -28,3 +28,9 @@ def afterReg(request):
     
     reg.save()
     return HttpResponse("Your Data Saved ")
+
+def login (request):
+    return render(request,'login.html')
+
+def customer_reg (request):
+    return render(request,'registercustomer.html')
