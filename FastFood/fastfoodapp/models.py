@@ -60,18 +60,22 @@ class Restaurant(models.Model):
 
 
 
+# class FoodItem(models.Model):
+#     # F_id = models.IntegerField(primary_key=True, default=101)
+#     It_Name = models.CharField(max_length=200)
+#     It_Kind = models.CharField(max_length=200)
+#     It_Size = models.CharField(max_length=200)
+
+
 class FoodItem(models.Model):
-    F_id = models.IntegerField(primary_key=True, default=101)
     It_Name = models.CharField(max_length=200)
     It_Kind = models.CharField(max_length=200)
     It_Size = models.CharField(max_length=200)
 
-
-
-
 class Add(models.Model): 
     R_id = models.ForeignKey(Restaurant(), default=1 ,on_delete= models.SET_DEFAULT)
-    F_id = models.ForeignKey(FoodItem(), default=1 ,on_delete= models.SET_DEFAULT)
+    F_id=models.ForeignKey(FoodItem(),default=1,on_delete=models.SET_DEFAULT)
+    # F_id = models.ForeignKey(FoodItem(), default=1 ,on_delete= models.SET_DEFAULT)
     
 
 
@@ -80,7 +84,7 @@ class Add(models.Model):
 
 
 class DeliveryInfo(models.Model):
-    D_id = models.IntegerField(primary_key=True, default=201)
+    
     D_Name = models.CharField(max_length=200)
     D_time = models.DateTimeField()
     D_totalCost = models.FloatField()
@@ -88,8 +92,8 @@ class DeliveryInfo(models.Model):
 
 
 class has(models.Model):
-    Food_it_id = models.ForeignKey(FoodItem(),default=101 ,on_delete=models.SET_DEFAULT)
-    Delivery_id= models.ForeignKey(DeliveryInfo(), default=201, on_delete=models.SET_DEFAULT)
+    Food_it_id = models.ForeignKey(FoodItem(),default=1 ,on_delete=models.SET_DEFAULT)
+    Delivery_id= models.ForeignKey(DeliveryInfo(), default=1, on_delete=models.SET_DEFAULT)
     
 
 
