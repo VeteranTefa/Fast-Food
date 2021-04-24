@@ -24,8 +24,8 @@ urlpatterns = [
     path('restaurantreg',restaurant_Reg,name="RegRestaurant"),
     path('restaurant',restaurant,name="Restaurant"),
     path('congratulations',afterReg,name="congratulations"),
-     path('login/',login,name="login"),
-     path('customer/',customer_reg ,name="customer"),
+    path('login/',login,name="login"),
+    path('customer/',customer_reg ,name="customer"),
 
 
 ]
