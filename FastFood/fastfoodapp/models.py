@@ -5,13 +5,14 @@ from django.db import models
 
 
 class Restaurant(models.Model):
-    R_Name=models.CharField(max_length=200)
+    R_Name=models.CharField(max_length=200,)
     R_Type=models.CharField(max_length=200)
     R_Email=models.EmailField()
     R_Phone=models.BigIntegerField(default=0)
     R_Password=models.CharField(max_length=200)
     R_City=models.CharField(max_length=200)
     R_Area=models.CharField(max_length=200)
+    R_Image = models.ImageField(upload_to='media/images', default="null")
 
     class Meta:
         verbose_name_plural = 'Restaurants'
@@ -61,11 +62,17 @@ class Restaurant(models.Model):
 
 
 class FoodItem(models.Model):
-    F_id = models.IntegerField(primary_key=True, default=101)
+    F_id = models.AutoField(primary_key=True)
     It_Name = models.CharField(max_length=200)
     It_Kind = models.CharField(max_length=200)
     It_Size = models.CharField(max_length=200)
+    F_Images= models.ImageField(upload_to='media/images', default="null")
 
+
+
+    def __str__(self):
+        return self.It_Name
+    
 
 
 

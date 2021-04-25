@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from fastfoodapp.views import mainpage,typepage,restaurant_Reg,restaurant,afterReg,login,customer_reg
+from django.conf import settings
+from django.conf.urls.static import static 
+from fastfoodapp.views import mainpage,typepage,restaurant_Reg,restaurant,afterReg,login,customer_reg,Rdessert,Rmeal,Outer_SearchBox
+
+
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +32,13 @@ urlpatterns = [
     path('congratulations',afterReg,name="congratulations"),
      path('login/',login,name="login"),
      path('customer/',customer_reg ,name="customer"),
+     path('RDFPage/',Rdessert ,name="RDFPage"),
+     path('Rmeals/',Rmeal ,name="Rmeals"),
+    #  path('search/',SearchBox ,name="search"),
+     path('Outer_SearchBox/',Outer_SearchBox ,name="search"),
+    #  path('search/', SearchBox, name='search'),
+    #  path('Hdessert/',Hdessert ,name="Hdessert"),
+    #  path('Hmeal/',Hmeal ,name="Hmeal"),
 
+]+static(settings.MEDIA_URL ,document_root=settings.MEDIA_ROOT)
 
-]
