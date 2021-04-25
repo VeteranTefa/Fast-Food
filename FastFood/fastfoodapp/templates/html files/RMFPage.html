@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% comment %} {% csrf_token %} {% endcomment %}
 <html lang="en">
 <head>
   <title>Bootstrap Example</title>
@@ -43,7 +44,6 @@
           <div class="search-icon"><span class="fas fa-search"></span></div>
           <div class="cancel-icon"><span class="fas fa-times"></span></div>
       <form action="{% url 'search' %}" method="POST">
-                {% comment %} {% csrf_token %} {% endcomment %}
                 <input type="search" class="search-data" placeholder="Search for Foods-Restaurants " name="searched" >
                 <button type="submit" class="fas fa-search"></button>
           </form>
