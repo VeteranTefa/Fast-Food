@@ -5,10 +5,10 @@ from django.db import models
 
 
 class Restaurant(models.Model):
-    R_Name=models.CharField(max_length=200)
+    R_Name=models.CharField(max_length=200,unique=True)
     R_Type=models.CharField(max_length=200)
-    R_Email=models.EmailField()
-    R_Phone=models.BigIntegerField(default=0)
+    R_Email=models.EmailField(max_length=200,unique=True)
+    R_Phone=models.BigIntegerField(default=0,unique=True)
     R_Password=models.CharField(max_length=200)
     R_City=models.CharField(max_length=200)
     R_Area=models.CharField(max_length=200)
@@ -100,12 +100,19 @@ class has(models.Model):
 class Customer(models.Model):
     C_Fname=models.CharField(max_length=200)
     C_Lname=models.CharField(max_length=200)
-    C_Email=models.EmailField()
+    C_Email=models.EmailField(max_length=200,unique=True)
     C_Password=models.CharField(max_length=200)
     C_Password2=models.CharField(max_length=200)
-    C_Phone=models.CharField(max_length=200)
+    C_Phone=models.CharField(max_length=200,unique=True)
     C_City=models.CharField(max_length=200)
     C_Area=models.CharField(max_length=200)
+
+    class Meta:
+        verbose_name_plural = 'Customers'
+        
+    def __str__(self):
+        return self.C_Fname+" "+C_Lname
+
 # class Customer(models.Model):
 #     C_id = models.IntegerField(primary_key=True, default=1000)
 #     C_Fname = models.CharField(max_length=200)
