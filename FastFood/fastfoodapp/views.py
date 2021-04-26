@@ -39,7 +39,7 @@ def Rmeal(request):
 
         # Search Fuchtion 
 def SearchBox(request):
-    print("hi")
+    
     if request.method == "GET":
         searched = request.GET.get('searched')
         FList = FoodItem.objects.all().filter(It_Name=searched)
