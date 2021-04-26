@@ -71,6 +71,8 @@ class FoodItem(models.Model):
     It_Name = models.CharField(max_length=200)
     It_Kind = models.CharField(max_length=200)
     It_Size = models.CharField(max_length=200)
+    It_Prise = models.PositiveIntegerField(default= 0.0)
+    It_Descrip = models.CharField(max_length=200)
 
 class Add(models.Model): 
     R_id = models.ForeignKey(Restaurant(), default=1 ,on_delete= models.SET_DEFAULT)
