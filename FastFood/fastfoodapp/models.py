@@ -111,7 +111,7 @@ class Customer(models.Model):
         verbose_name_plural = 'Customers'
         
     def __str__(self):
-        return self.C_Fname+" "+C_Lname
+        return self.C_Fname
 
 # class Customer(models.Model):
 #     C_id = models.IntegerField(primary_key=True, default=1000)

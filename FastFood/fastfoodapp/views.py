@@ -58,13 +58,54 @@ def afterReg(request):
             messages.info(request,"Password Must be a letters or numbers and at least 6 characters")
 
         return render(request,"regestrationforrestuarnt.html")
-        
-
+#function for aboutpage
+def Aboutus(request):
+    return render (request,'aboutpage.html')       
 
     
-
+#function for loginpage
 def login (request):
     return render(request,'login.html')
-
+#function for register for customer page
 def customer_reg (request):
     return render(request,'registercustomer.html')
+#function for connect register for customer page with database
+def User(request):
+         C_Fname=request.POST['fname']
+         C_Lname=request.POST['lname']
+         C_Email=request.POST['email']
+         C_Password =request.POST['password']
+         C_Password2=request.POST['Rpassword']
+         C_Phone=request.POST['phone']
+         C_City=request.POST['city']
+         C_Area =request.POST['area']
+         #regphone=re.match("r01(0|1|2|5)[0-9]{8}", C_Phone)
+         regname=re.match("^[a-zA-Z]*$",C_Fname)
+         if not regname:
+             messages.error(request,"name must be vaild")
+             return render (request,'registercustomer.html')
+         elif C_Password != C_Password2 :
+             messages.error(request,"passwod must be equal Retypepassword")
+             return render (request,'registercustomer.html')
+         #elif not regphone:
+              #messages.error(request,"phone must be egypt")
+              #return render (request,'registercustomer.html')
+        
+         else:
+             NewUser=models.Customer(C_Fname=C_Fname,C_Lname=C_Lname,C_Email=C_Email,
+              C_Password=C_Password,C_Password2=C_Password2,C_Phone=C_Phone,C_City=C_City,C_Area=C_Area)
+             NewUser.save()
+             messages.info(request,"Successfully Registered")
+             return render(request,'typePage.html')
+
+
+#function for connect login page with database
+def curentuser(request):
+    if request.method=="POST":
+        try:
+            Userdetails=models.Customer.objects.get(C_Email=request.POST['email'],C_Password=request.POST['password'])
+            request.session['email']=Userdetails.C_Email
+            return render(request,'mainpage.html')
+        except models.Customer.DoesNotExist as e:
+            messages.success(request,'username/password invaild.........') 
+    return render(request,'login.html')    
