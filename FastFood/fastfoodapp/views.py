@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from . import models
 import re
 from django.contrib import messages
@@ -72,7 +72,46 @@ def restaurant_Reg(request):
     return render(request,'regestrationforrestuarnt.html',{})
 
 def restaurant(request):
-    return render(request,'restaurant.html',{})
+#DELETD FROM DATABASE
+    
+ #RETRIVE FROM DATABASE
+    foods_details = FoodItem.objects.all()
+#    foods_list=[]
+ #   for meal in foods_details:
+  #      foods_list.append(meal.It_Name)
+   #     foods_list.append(meal.It_Size)
+    #    foods_list.append(meal.It_Kind)
+    
+    #print(foods_list)
+
+    return render(request,'restaurant.html',{'foods_details' : foods_details})
+
+def addmeal(request):
+    #ADD TO DATABASE
+    if request.method == 'POST':
+        item_name = request.POST['item_name']
+        item_size = request.POST['item_size']
+        item_kind = request.POST['item_kind']
+        item_prise = request.POST['item_prise']
+        item_descrip = request.POST['item_descrip']
+
+        foods = FoodItem.objects.create(
+            It_Name = item_name,
+            It_Size = item_size,
+            It_Kind = item_kind,
+            It_Prise = item_prise,
+            It_Descrip = item_descrip
+        )
+    return render(request,'addmeal.html',{})
+
+
+def delete(request,id):
+#DELETD FROM DATABASE
+    if request.method == 'POST':
+        obj = FoodItem.objects.get(id=id)
+        obje.delete()
+        return redirect('restaurant.html')
+
 
 def afterReg(request):
     res_name=request.POST['restname']
