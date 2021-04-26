@@ -12,6 +12,9 @@ class Restaurant(models.Model):
     R_Password=models.CharField(max_length=200)
     R_City=models.CharField(max_length=200)
     R_Area=models.CharField(max_length=200)
+    # R_Image = models.ImageField(upload_to='media/images', default="null")
+
+
 
     class Meta:
         verbose_name_plural = 'Restaurants'
@@ -19,64 +22,29 @@ class Restaurant(models.Model):
     def __str__(self):
         return self.R_Name
 
-# # class Restaurant(models.Model):
-# #     R_id = models.IntegerField(primary_key=True, serialize=True,default=1000)
-# #     R_Fname = models.CharField(max_length=200)
-# #     R_Lname = models.CharField(max_length=200)
-# #     R_Rating= models.IntegerField(default=1)
-# #     R_City  = models.CharField(max_length=200)
-# #     R_Area  = models.CharField(max_length=200)
 
 
-
-# #     class Meta:
-# #         verbose_name_plural = 'Restaurants'
-
-
-
-# #     def __str__(self):
-# #         A = self.R_Fname +' ' + self.R_Lname
-# #         return A
-
-
-
-
-
-# # class RestContact(models.Model):
-# #     Restaurant_id = models.ForeignKey(Restaurant , default=1 , on_delete=models.SET_DEFAULT)
-# #     Restaurant_mobile = models.IntegerField()
-# #     Restaurant_Telephone = models.IntegerField()
-# #     Restaurant_Contact_pouplareName = models.CharField(max_length=200, default='The Contact Numbers')
-    
-    
-
-
-# #     class Meta:
-# #         verbose_name_plural = 'Restaurants Contacts'
-
-
-# #     def __str__(self):
-# #         return self.Restaurant_Contact_pouplareName
-
-
-
-# class FoodItem(models.Model):
-#     # F_id = models.IntegerField(primary_key=True, default=101)
-#     It_Name = models.CharField(max_length=200)
-#     It_Kind = models.CharField(max_length=200)
-#     It_Size = models.CharField(max_length=200)
 
 
 class FoodItem(models.Model):
     It_Name = models.CharField(max_length=200)
     It_Kind = models.CharField(max_length=200)
     It_Size = models.CharField(max_length=200)
+    F_Images= models.ImageField(upload_to='media/images', default="null")
+
+
+
+    def __str__(self):
+        return self.It_Name
+    
+
+
 
 class Add(models.Model): 
     R_id = models.ForeignKey(Restaurant(), default=1 ,on_delete= models.SET_DEFAULT)
     F_id=models.ForeignKey(FoodItem(),default=1,on_delete=models.SET_DEFAULT)
-    # F_id = models.ForeignKey(FoodItem(), default=1 ,on_delete= models.SET_DEFAULT)
     
+
 
 
 
@@ -84,10 +52,12 @@ class Add(models.Model):
 
 
 class DeliveryInfo(models.Model):
-    
     D_Name = models.CharField(max_length=200)
     D_time = models.DateTimeField()
     D_totalCost = models.FloatField()
+
+
+
 
 
 
@@ -95,6 +65,8 @@ class has(models.Model):
     Food_it_id = models.ForeignKey(FoodItem(),default=1 ,on_delete=models.SET_DEFAULT)
     Delivery_id= models.ForeignKey(DeliveryInfo(), default=1, on_delete=models.SET_DEFAULT)
     
+
+
 
 
 class Customer(models.Model):
@@ -113,21 +85,12 @@ class Customer(models.Model):
     def __str__(self):
         return self.C_Fname+" "+C_Lname
 
-# class Customer(models.Model):
-#     C_id = models.IntegerField(primary_key=True, default=1000)
-#     C_Fname = models.CharField(max_length=200)
-#     C_Lname = models.CharField(max_length=200)
-#     C_City  = models.CharField(max_length=200)
-#     C_Area  = models.CharField(max_length=200)
 
 
 
-# class CustContact(models.Model):
-#     Customer_id = models.ForeignKey(Customer(), default=1000,on_delete=models.SET_DEFAULT)
-#     Customer_mobile = models.IntegerField()
-#     Customer_Telephone = models.IntegerField()
-#     Customer_Email = models.EmailField()
     
+
+
 
 
 class Order(models.Model):
@@ -137,9 +100,11 @@ class Order(models.Model):
 
 
 
+
+
 class Receive(models.Model):
     Customer_id = models.ForeignKey(Customer(), default=1,on_delete=models.SET_DEFAULT)
-    Delivery_id= models.ForeignKey(DeliveryInfo(), default=1, on_delete=models.SET_DEFAULT)
+    Delivery_id = models.ForeignKey(DeliveryInfo(), default=1, on_delete=models.SET_DEFAULT)
     
 
 

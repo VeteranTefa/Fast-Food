@@ -2,10 +2,68 @@ from django.shortcuts import render,HttpResponse
 from . import models
 import re
 from django.contrib import messages
+from django.urls import path
+from django.views.decorators.csrf import csrf_exempt
+from .models import Restaurant,FoodItem
+
 # Create your views here.
 
+
+
+        #       Mubarak Functions workplace        #
+
 def mainpage(request):
-    return render(request,'mainPage.html',{})
+    Restobject = Restaurant.objects.all()
+    return render(request,'mainPage.html',{'Restobject': Restobject})
+
+
+
+
+    # Food Page function 
+def Rdessert(request):
+    dessert = FoodItem.objects.filter(It_Kind='Dessert')
+    # print("hi")
+    # for d in dessert:
+    #     print("hello")
+    #     print(d)
+    return render(request,'html files/RDFPage.html',{'dessert' : dessert})
+
+
+
+def Rmeal(request):
+    meals = FoodItem.objects.all().filter(It_Kind='Meals')
+    # print(meals)
+    return render(request, 'html files/RMFPage.html', {'meals':meals})
+
+
+
+        # Search Fuchtion 
+def SearchBox(request):
+    print("hi")
+    if request.method == "GET":
+        searched = request.GET.get('searched')
+        FList = FoodItem.objects.all().filter(It_Name=searched)
+        print(FList)
+        return render(request, 'html files/test.html', {'searched':searched, 'FList' : FList})
+    else:
+        return render(request, 'html files/test.html', {})
+
+
+@csrf_exempt
+def Outer_SearchBox(request):
+    if request.method == "POST":
+        outer_search = request.POST.get('searched')
+        Flist_two= FoodItem.objects.all().filter(It_Name=outer_search)
+        # print(Flist_two)
+        return render(request, 'html files/test.html', {'outer_search': outer_search, 'Flist_two':Flist_two})
+    else:
+        return render(request, 'html files/test.html', {})
+
+
+              # mubarak workespace end here 
+        # --------------------------------------------------#
+
+
 
 def typepage(request):
     return render(request,'typePage.html',{})
