@@ -15,51 +15,7 @@
 
     
     <style>
-        body{
-    
-    background-color:rgba(255, 251, 233, 0.719) ;
-}
-img{
-    margin: 5%;
-    margin-left:10%;
-width:300px;
-height:300px;
-}
-.btn{
-    float:left;
-    margin: 10%;
-    margin-left:30%;
-    width: 150px;
-    height: 50px;
-    background-color: bisque;
-    font-weight: bold;
-}
-a{
-}
-#ord{
-    margin-left:2%;
-    color: black;
-}
-p,h3{
-    text-align:left;
-}
 
-#pro:hover{
-    transform: scale(1.25);
-    transition:all 3s ;
-}
-.centered{
-    position:absolute;
-    top:80%;
-    left:30%;
-    font-size: 60px;
-    font-style:initial;
-}
-.cont{
-    position:relative;
-    text-align:center;
-    color:white;
-}
     
     </style>
     <script>
@@ -120,15 +76,11 @@ p,h3{
             <div class="centered">RESTURANT FOODS</div>
         </div>
         <div class="row" style="background-color:cornsilk;">
-            <div class="col-sm-4">
-            <button type="button" class="btn btn-outline-dark "><a href="#fo" style ="text-decoration-line: none; "> ADD MEAL </a></button>
+            <div class="col-md-6">
+            <button type="button" class="btn btn-outline-dark "><a href="http://127.0.0.1:8000/restaurant/addmeal" style ="text-decoration-line: none; "> ADD MEAL </a></button>
             </div>
-    
-            <div class="col-sm-4" >
-                <button type="button" class="btn btn-outline-dark ">DELETE MEAL</button>
-            </div>
-    
-            <div class="col-sm-4">
+      
+            <div class="col-md-6">
                 <button type="button" class="btn btn-outline-dark ">OFFERS</button>
             </div>
     
@@ -138,48 +90,30 @@ p,h3{
 
             <div class="row" style="margin-top: 2%;" >
 
-                <div  class=" col-sm-6">
+                <div id="blok" class=" col-md-6" method="POST">
                     <img id="pro" src="../static/fastfoodapp/images/img/perger1.jpeg" alt="perger1.jpeg">
-                    <h3>CHICKEN BURGERS</h3>
-                    <p>Water spinach arugula pea tatsoi aubergine spring onion.</p>
-                    <button id="ord" type="button" class="btn btn-outline-success">ORDER</button>
+                    <h4>Item_Name : CHICKEN BURGERS</h4>
+                    <h4>Item_Kind : LUNCH</h4>
+                    <h4> Item_Size : LARGe</h4>           
+                    <button  id="ord" type="submit" class="btn btn-danger">DELETE</button>
               
                 </div>
         
-                <div  class="col-sm-6">
+                <div id="blok" class="col-md-6" method="POST">
                     <img id="pro" src="../static/fastfoodapp/images/img/perger2.jpeg" alt="perger2.jpeg">
-                    <h3>BEEF BURGERS</h3>
-                    <p>Beetroot water spinach okra water chestnut ricebean pea.</p>
-                    <button id="ord" type="button" class="btn btn-outline-success">ORDER</button>
+                    <h4>Item_Name : BEEF BURGERS</h4>
+                    <h4>Item_Kind : LUNCH</h5>
+                    <h4> Item_Size : LARGe</h4> 
+                    <button id="ord" type="submit" class="btn btn-danger">DELETE</button>
                 </div>
+
+                {% for meal in foods_details %}
+
+                {%endfor%}
+
             </div>
             
-            <div class="row" style="margin-top: 2%; background-color: blanchedalmond; text-align: center; padding: 1%;" >
-                <div  class=" col-sm-12">
-                    <h1>ADD MEAL</h1>
-                </div>
-            </div>
-
-            <button type="submit" class="btn-lg btn-success">SUBMMIT ORDER</button>
-
-
-            <form id="fo" method="POST"style="margin-top: 2%;" >
-                {% csrf_token %}
-                <label>Item_Name</label>
-                <input type="text" class="form-control" name="item_name" id="id_item_name">
-                <br>
-                <label>Item_Kind</label>
-                <input type="text" class="form-control" name="item_kind" id="id_item_kind" >
-                <br>
-                <label>Item_Size</label>
-                <input type="text" class="form-control" name="item_size" id="id_item_size" >
-                <br>
-                <label>Item_Description</label>
-                <input type="text" class="form-control" name="item_descrip" id="id_item_descrip" >
-                <br>
-                <button type="submit" class="btn-lg btn-success">ADD</button>
-                
-            </form>
+           
         </div>
     </div>
     
