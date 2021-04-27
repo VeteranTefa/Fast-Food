@@ -16,7 +16,7 @@ from .models import Restaurant,FoodItem
 def mainpage(request):
     Restobject = Restaurant.objects.all()
     Foods = FoodItem.objects.all()
-    return render(request,'mainPage.html',{'Restobject': Restobject[0:3], 'Foods': Foods[0:3]})
+    return render(request,'Mubarak html files/mainPage.html',{'Restobject': Restobject[0:3], 'Foods': Foods[0:3]})
 
 
 
@@ -28,14 +28,14 @@ def Rdessert(request):
     # for d in dessert:
     #     print("hello")
     #     print(d)
-    return render(request,'html files/RDFPage.html',{'dessert' : dessert})
+    return render(request,'Mubarak html files/RDFPage.html',{'dessert' : dessert})
 
 
 
 def Rmeal(request):
     meals = FoodItem.objects.all().filter(It_Kind='Meals')
     # print(meals)
-    return render(request, 'html files/RMFPage.html', {'meals':meals})
+    return render(request, 'Mubarak html files/RMFPage.html', {'meals':meals})
 
 
 
@@ -46,9 +46,9 @@ def SearchBox(request):
         searched = request.GET.get('searched')
         FList = FoodItem.objects.all().filter(It_Name=searched)
         print(FList)
-        return render(request, 'html files/test.html', {'searched':searched, 'FList' : FList})
+        return render(request, 'Mubarak html files/test.html', {'searched':searched, 'FList' : FList})
     else:
-        return render(request, 'html files/test.html', {})
+        return render(request, 'Mubarak html files/test.html', {})
 
 
 @csrf_exempt
@@ -57,15 +57,15 @@ def Outer_SearchBox(request):
         outer_search = request.POST.get('searched')
         Flist_two= FoodItem.objects.all().filter(It_Name=outer_search)
         # print(Flist_two)
-        return render(request, 'html files/test.html', {'outer_search': outer_search, 'Flist_two':Flist_two})
+        return render(request, 'Mubarak html files/test.html', {'outer_search': outer_search, 'Flist_two':Flist_two})
     else:
-        return render(request, 'html files/test.html', {})
+        return render(request, 'Mubarak html files/test.html', {})
 
 
 
 def OrderPage(request):
 
-    return render(request, ' html files/OrdersPage.html', {})
+    return render(request, ' Mubarak html files/OrdersPage.html', {})
 
 
               # mubarak workespace end here 
@@ -109,13 +109,15 @@ def addmeal(request):
         item_kind = request.POST['item_kind']
         item_prise = request.POST['item_prise']
         item_descrip = request.POST['item_descrip']
+        F_Images  = request.POST['item_Image']
 
         foods = FoodItem.objects.create(
             It_Name = item_name,
             It_Size = item_size,
             It_Kind = item_kind,
             It_Prise = item_prise,
-            It_Descrip = item_descrip
+            It_Descrip = item_descrip,
+            F_Images= F_Images
         )
     return render(request,'addmeal.html',{})
 
@@ -175,9 +177,9 @@ def afterReg(request):
 
     
 def Aboutus(request):
-    return render (request,'aboutpage.html')     
+    return render (request,'aboutpage.html',{})     
 
-def login (request):
+def login(request):
     return render(request,'login.html')
 
 def customer_reg (request):
@@ -219,7 +221,7 @@ def curentuser(request):
         try:
             Userdetails=models.Customer.objects.get(C_Email=request.POST['email'],C_Password=request.POST['password'])
             request.session['email']=Userdetails.C_Email
-            return render(request,'mainpage.html')
+            return render(request,'Mubarak html files/mainpage.html')
         except models.Customer.DoesNotExist as e:
             messages.success(request,'username/password invaild.........') 
     return render(request,'login.html')        
