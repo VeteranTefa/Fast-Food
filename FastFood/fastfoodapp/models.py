@@ -33,11 +33,7 @@ class FoodItem(models.Model):
     It_Kind = models.CharField(max_length=200)
     It_Size = models.CharField(max_length=200)
     It_Prise = models.PositiveIntegerField(default= 0.0)
-<<<<<<< HEAD
     It_Descrip = models.CharField(max_length=200, default='null')
-=======
-    It_Descrip = models.CharField(max_length=200,default="null")
->>>>>>> 94df555cc48bb1c3d5d158509bcddcf00aa9a1dd
     F_Images= models.ImageField(upload_to='media/images', default="null")
     F_Rate = models.PositiveIntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(5)])
 
