@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="{% static 'fastfoodapp/css/reg.css' %}"/>
 </head>
 <body>
-    <form method="POST" action="{%url 'user' %}">
-        {%csrf_token%}
+    <form method="POST" action="{% url 'user' %}">
+        {% csrf_token %}
 		{% if messages %}
 		<ul>
 		  <div class="alert alert-danger"role="alert" style="color:#000;font-weight: bold;">

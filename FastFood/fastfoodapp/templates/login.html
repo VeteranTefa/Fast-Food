@@ -24,8 +24,8 @@
                       </div>
                       <div class="card-body">
                           <!--start form -->
-                          <form method="POST" action="{%url 'user1'%}">
-                              {%csrf_token%}
+                          <form method="POST" action="">
+                              {% csrf_token %}
                                <!-- User name-->
                               <div class="input-group form-group">
                                   <div class="input-group-prepend">
@@ -50,10 +50,10 @@
                           <!--End form-->
                       </div>
                       {% if messages%}
-                              {%for msg in messages%}
+                              {% for msg in messages%}
                               <b style="color:blue">{{msg}}</b>
-                              {%endfor%}
-                              {%endif%}-->
+                              {% endfor %}
+                              {% endif %}-->
                       <div class="card-footer">
                           <div class="d-flex justify-content-center links">
                               Don't have an account?<a href="{% url 'customer' %}">Sign Up</a>
