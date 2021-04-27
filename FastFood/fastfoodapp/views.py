@@ -71,19 +71,18 @@ def typepage(request):
 def restaurant_Reg(request):
     return render(request,'regestrationforrestuarnt.html',{})
 
+def details(request):
+    return render(request,'details.html',{})
+
+def customer(request):
+    return render(request,'customer.html',{})
+
+
 def restaurant(request):
 #DELETD FROM DATABASE
     
  #RETRIVE FROM DATABASE
     foods_details = FoodItem.objects.all()
-#    foods_list=[]
- #   for meal in foods_details:
-  #      foods_list.append(meal.It_Name)
-   #     foods_list.append(meal.It_Size)
-    #    foods_list.append(meal.It_Kind)
-    
-    #print(foods_list)
-
     return render(request,'restaurant.html',{'foods_details' : foods_details})
 
 def addmeal(request):
@@ -106,12 +105,9 @@ def addmeal(request):
 
 
 def delete(request,id):
-#DELETD FROM DATABASE
-    if request.method == 'POST':
-        obj = FoodItem.objects.get(id=id)
-        obje.delete()
-        return redirect('restaurant.html')
-
+    obi = FoodItem.objects.get(id=id)
+    obi.delete()
+    return redirect('/restaurant')
 
 def afterReg(request):
     res_name=request.POST['restname']
