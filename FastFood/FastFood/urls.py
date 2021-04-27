@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static 
-from fastfoodapp.views import mainpage,typepage,restaurant_Reg,restaurant,addmeal,delete,afterReg,login,customer_reg,Rdessert,Rmeal,Outer_SearchBox,SearchBox,OrderPage
+from fastfoodapp.views import mainpage,typepage,restaurant_Reg,restaurant,addmeal,delete,afterReg,login,customer_reg,Rdessert,Rmeal,Outer_SearchBox,SearchBox,OrderPage,Aboutus
+
 
 
 urlpatterns = [
@@ -36,6 +37,7 @@ urlpatterns = [
      path('Outer_SearchBox/',Outer_SearchBox ,name="search"),
      path('SearchBox/',SearchBox ,name="SearchBox"),
      path('OrderPage/',OrderPage ,name="OrderPage"),
+     path('aboutus/',Aboutus ,name="aboutus"),
 
 
 ]+static(settings.MEDIA_URL ,document_root=settings.MEDIA_ROOT)
