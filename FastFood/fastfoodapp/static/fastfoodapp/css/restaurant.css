@@ -237,4 +237,51 @@
                     .content .space{
                       margin: 10px 0;
                     }
-                    
+                    body{
+    
+                      background-color:rgba(255, 251, 233, 0.719) ;
+					}
+					img{
+                      margin: 5%;
+                      margin-left:10%;
+					  width:300px;
+					  height:300px;
+					 }
+					.btn{
+					  float:left;
+					  margin: 10%;
+					  margin-left:30%;
+					  width: 150px;
+					  height: 50px;
+					  background-color: bisque;
+					  font-weight: bold;
+					}
+                  
+					#ord{
+					  margin-left:2%;
+					  color: black;
+					}
+					p,h3{
+					  text-align:left;
+					}
+
+					#pro:hover{
+					  transform: scale(1.25);
+					  transition:all 3s ;
+            padding: 1%;
+					}
+					.centered{
+					  position:absolute;
+					  top:80%;
+					  left:30%;
+					  font-size: 60px;
+					  font-style:initial;
+					}
+					.cont{
+					  position:relative;
+					  text-align:center;
+					  color:white;
+					}
+					#blok{
+					margin-top: 5%;
+					}

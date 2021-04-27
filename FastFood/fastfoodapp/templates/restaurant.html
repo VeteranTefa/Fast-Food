@@ -88,10 +88,13 @@
         
         <div class="container" style="background-color:rgb(255, 255, 245);">
 
+
             <div class="row" style="margin-top: 2%;" >
+          {% for meal in foods_details %}
 
                 <div id="blok" class=" col-md-6" method="POST">
                     <img id="pro" src="../static/fastfoodapp/images/img/perger1.jpeg" alt="perger1.jpeg">
+<<<<<<< HEAD
                     <h4>Item_Name : CHICKEN BURGERS</h4>
                     <h4>Item_Kind : LUNCH</h4>
                     <h4> Item_Size : LARGe</h4>           
@@ -111,6 +114,22 @@
 
                 {%endfor%}
 
+=======
+                    <h4>Item_Name : {{meal.It_Name}}</h4>
+                    <h4>Item_Kind : {{meal.It_Kind}}</h4>
+                    <h4> Item_Size : {{meal.It_Size}}</h4> 
+                    <h4> Item_Prise : {{meal.It_Prise}}</h4> 
+                    <h4> Item_Descrip : {{meal.It_Descrip}}</h4> 
+                    
+                    <button id="ord" class="btn btn-danger"> <a href="/restaurant/{{meal.id}}" style="color: crimson;"> DELETE</a></button>
+                </div>
+          {%endfor%}
+                
+          
+
+                
+
+>>>>>>> 94df555cc48bb1c3d5d158509bcddcf00aa9a1dd
             </div>
             
            

@@ -37,12 +37,12 @@ body{
           <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none;">
           Otlob</a>
           <div class="nav-items">
-          <li><a href="#">About Us</a></li>
+          <li><a href="{% url 'aboutus'%}">About Us</a></li>
           <li><a href="#">Foods</a></li>
           <li><a href="{% url 'Restaurant' %}">Restaurant</a></li>
           <li><a href="#">Feedback</a></li>
-          <li><a href="{% url 'login' %}">Log In</a></li>
-          <li><a href="{% url 'TypePage' %}">Log Up</a></li>
+          <li><a href="{% url 'login' %}">Sing In</a></li>
+          <li><a href="{% url 'TypePage' %}">Sing Up</a></li>
           </div>
           <div class="search-icon">
           <span class="fas fa-search"></span></div>
