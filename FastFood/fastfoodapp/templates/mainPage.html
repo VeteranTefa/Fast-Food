@@ -9,10 +9,18 @@
     <link rel="stylesheet" href="{% static 'fastfoodapp/css/mainpage.css' %}"> 
     <link rel="stylesheet" href="{% static 'fastfoodapp/css/index.css' %}"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+                {% comment %} Rating link {% endcomment %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                {% comment %}  {% endcomment %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
+    {% comment %} Rating style {% endcomment %}
+    .checked {
+      color: orange;
+    }
+    {% comment %} Footer style {% endcomment %}
     footer {
     background: #3a3a3a;
     color: #fff;
@@ -35,7 +43,7 @@
       text-align: center;
     }
     .card{
-      background-color: grey;
+      {% comment %} background-color: grey; {% endcomment %}
       margin: 50px;
     }
     @media only screen and (max-width: 600px) {
@@ -158,40 +166,131 @@
         </div>
     </header><!-- End header -->
 
+
+
+
                                  <!-- Cards Section -->
      <hr>
+     
+      <div id="sec-header">
+          <h4>Foods<h4>
+      </div>
+
+      <div class="container-fluid" id="Restaurants-Section">
+        <div class="row">
+          {% for F in Foods %}
+            <div class="card" style="width:250px;">
+                <div class="card-header">
+                    <img class="card-img-top" src="{{F.F_Images.url}}" style="height:200px; height:200px;" alt="card image">
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">Name :{{F.It_Name}}</h6>
+                    <h6 class="card-title">Type :{{F.It_Kind}}</h6>
+                    <h6 class="card-title">
+                      Rate : {{F.F_Rate}} <span class="fa fa-star checked"></span>
+                    </h6>
+                </div>
+                <div class="card-footer">
+                    <form action="{% url 'OrderPage' %}" method="POST ">{% csrf_token %}
+                              <input type="button" style="display:none;" name='search' value={{F.id}} >
+                            <button type="submit" class="btn btn-primary">See more</button>
+                    </form>
+                    {% comment %} <a class="btn btn-primary" href="{% url 'RDFPage' %}">Order</a> {% endcomment %}
+                </div>
+            </div>
+          {% endfor %}
+        </div>
+        
+
+        <div>
+            <button class="btn btn-primary"> select</button>
+            <hr>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                Checked
+                </label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+              <label class="form-check-label" for="flexCheckChecked">
+                Checked
+                </label>
+            </div>
+
+                        <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+              <label class="form-check-label" for="flexCheckChecked">
+                Checked
+                </label>
+            </div>
+        </div>
+
+      </div>
+
+
+
+
+
+     <hr>
+     
       <div id="sec-header">
           <h4>Restaurants<h4>
       </div>
 
       <div class="container-fluid" id="Restaurants-Section">
-            <div class="card" >
+        <div class="row">
+          {% for R in Restobject %}
+            <div class="card" style="width:250px;">
                 <div class="card-header">
-                    <img class="card-img-top" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.1e5oXnXYQ0juB42Ls3bLgQHaDt%26pid%3DApi&f=1" 
-                        alt="card image">
+                    <img class="card-img-top" src="{{R.R_Image.url}}" style="height:200px; height:200px;" alt="card image">
                 </div>
                 <div class="card-body">
-                    <h3 class="card-title">{{R.R_Name}}</h3>
-                    <p>Desserts</p>
+                    <h6 class="card-title">Name :{{R.R_Name}}</h6>
+                    <h6 class="card-title">Type :{{R.R_Type}}</h6>
+                    <h6 class="card-title">
+                      Rate : {{R.R_Rate}} <span class="fa fa-star checked"></span>
+                    </h6>
                 </div>
                 <div class="card-footer">
                     <a class="btn btn-primary" href="{% url 'RDFPage' %}">Visite</a>
                 </div>
             </div>
-            <div class="card" >
-                <div class="card-header">
-                    <img class="card-img-top" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.1e5oXnXYQ0juB42Ls3bLgQHaDt%26pid%3DApi&f=1" 
-                        alt="card image">
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">{{R.R_Name}}</h3>
-                    <p>Meals</p>
-                </div>
-                <div class="card-footer">
-                    <a class="btn btn-primary" href="{% url 'Rmeals' %}" >Visite</a>
-                </div>
+          {% endfor %}
+        </div>
+        
+
+        <div>
+            <button class="btn btn-primary"> select</button>
+            <hr>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                Checked
+                </label>
             </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+              <label class="form-check-label" for="flexCheckChecked">
+                Checked
+                </label>
+            </div>
+
+                        <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+              <label class="form-check-label" for="flexCheckChecked">
+                Checked
+                </label>
+            </div>
+        </div>
+
       </div>
+
+
+
+
 
                   <hr>
       {% comment %} <div id="sec-header">
