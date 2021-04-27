@@ -14,7 +14,7 @@ class Restaurant(models.Model):
     R_City=models.CharField(max_length=200)
     R_Area=models.CharField(max_length=200)
     R_Image = models.ImageField(upload_to='media/images', default="null")
-    R_Rate = models.PositiveIntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    R_Rate= models.PositiveIntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(5)])
 
 
 

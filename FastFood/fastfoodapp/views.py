@@ -15,7 +15,6 @@ from .models import Restaurant,FoodItem
 def mainpage(request):
     Restobject = Restaurant.objects.all()
     Foods = FoodItem.objects.all()
-
     return render(request,'mainPage.html',{'Restobject': Restobject[0:3], 'Foods': Foods[0:3]})
 
 
