@@ -111,6 +111,21 @@ class Order(models.Model):
 class Receive(models.Model):
     Customer_id = models.ForeignKey(Customer(), default=1,on_delete=models.SET_DEFAULT)
     Delivery_id = models.ForeignKey(DeliveryInfo(), default=1, on_delete=models.SET_DEFAULT)
+
+
+
+
+
+
+class testModel(models.Model):
+    Mid = models.AutoField(primary_key=True)
+    MName = models.CharField(max_length=50)
+
+
+
+
+
+
     
 
 
