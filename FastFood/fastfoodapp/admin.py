@@ -8,7 +8,7 @@ from .models import has
 from .models import Customer
 # from .models import CustContact
 from .models import Order
-from .models import Receive
+from .models import Receive,testModel
 
 # Register your models here.
 
@@ -22,3 +22,4 @@ admin.site.register(Customer)
 # admin.site.register(CustContact)
 admin.site.register(Order)
 admin.site.register(Receive)
+admin.site.register(testModel)

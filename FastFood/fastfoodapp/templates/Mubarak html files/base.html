@@ -7,31 +7,24 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>OrdersPage</title>
+        <title>base</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+        <style>
+            h1{
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        <h1> base page </h1>
         <div>
-                {{orderName}}
-                <br>
-                {{orderKink}}
-                <br>
-                {{orderSize}}
-                <br>
-                {{orderDescription}}
-                <br>
-                <div>
-                <img class="card-img-top" src="{{order.F_Images.url}}" style="height:200px; height:200px;" alt="card image">
-                </div>
-                <br>
-                {{orderRate}}
-                <br>
+                {{tesItem}}
         </div>
-        <script src="" async defer></script>
+        {% comment %} <script src="" async defer></script> {% endcomment %}
     </body>
 </html>
