@@ -16,6 +16,7 @@ from .models import Restaurant,FoodItem
 def mainpage(request):
     Restobject = Restaurant.objects.all()
     Foods = FoodItem.objects.all()
+    
     return render(request,'Mubarak html files/mainPage.html',{'Restobject': Restobject[0:3], 'Foods': Foods[0:3]})
 
 
@@ -195,24 +196,35 @@ def User(request):
          C_Phone=request.POST['phone']
          C_City=request.POST['city']
          C_Area =request.POST['area']
-         #regphone=re.match("r01(0|1|2|5)[0-9]{8}", C_Phone)
-         regname=re.match("^[a-zA-Z]*$",C_Fname)
-         if not regname:
-             messages.error(request,"name must be vaild")
-             return render (request,'registercustomer.html')
-         elif C_Password != C_Password2 :
-             messages.error(request,"passwod must be equal Retypepassword")
-             return render (request,'registercustomer.html')
-         #elif not regphone:
-              #messages.error(request,"phone must be egypt")
-              #return render (request,'registercustomer.html')
-        
-         else:
-             NewUser=models.Customer(C_Fname=C_Fname,C_Lname=C_Lname,C_Email=C_Email,
+         regphone=re.match(r"01(0|1|2|5)[0-9]{8}", C_Phone)
+        #  regname=re.match("^[a-zA-Z]*$",C_Fname)
+        #  if not regname:
+        #      messages.error(request,"name must be vaild")
+        #      return render (request,'registercustomer.html')
+         if C_Password == C_Password2 and regphone:
+            NewUser=models.Customer(C_Fname=C_Fname,C_Lname=C_Lname,C_Email=C_Email,
               C_Password=C_Password,C_Password2=C_Password2,C_Phone=C_Phone,C_City=C_City,C_Area=C_Area)
-             NewUser.save()
-             messages.info(request,"Successfully Registered")
-             return render(request,'typePage.html')
+            NewUser.save()
+            messages.info(request,"Successfully Registered")
+            return render(request,'registercustomer.html')
+         else:
+            if C_Password != C_Password2:
+                messages.error(request,"Password must be equal Retype Password")
+                return render(request,'registercustomer.html')
+            elif not regphone:
+                messages.error(request,"phone must be egypt")
+                return render (request,'registercustomer.html')
+
+
+
+            #  messages.error(request,"passwod must be equal Retypepassword")
+            #  return render (request,'registercustomer.html')
+        #  elif not regphone:
+        #       messages.error(request,"phone must be egypt")
+        #       return render (request,'registercustomer.html')
+        
+         
+            
 
 
 #function for connect login page with database
@@ -224,4 +236,20 @@ def curentuser(request):
             return render(request,'Mubarak html files/mainpage.html')
         except models.Customer.DoesNotExist as e:
             messages.success(request,'username/password invaild.........') 
-    return render(request,'login.html')        
+    return render(request,'login.html')
+
+def newUser(request):
+    if request.method=="POST":    
+        try:
+            userrest=models.Restaurant.objects.get(R_Email=request.POST['email'],R_Password=request.POST['pass']) 
+            request.session['email']=userrest.R_Email
+            return render(request,'Mubarak html files/mainpage.html',{'userrest':userrest})
+        except models.Restaurant.DoesNotExist as e:
+            messages.success(request,'Email or Password Invalid') 
+    return render(request,'loginForRestuarant.html')  
+
+def loginRestuarnt(request):
+    return render(request,'loginForRestuarant.html',{})
+
+def loginType(request):
+    return render(request,'loginType.html',{})

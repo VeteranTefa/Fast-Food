@@ -41,17 +41,17 @@ body{
           <li><a href="#">Foods</a></li>
           <li><a href="{% url 'Restaurant' %}">Restaurant</a></li>
           <li><a href="#">Feedback</a></li>
-          <li><a href="{% url 'loginType' %}">Sing In</a></li>
-          <li><a href="{% url 'TypePage' %}">Sing Up</a></li>
+          <li><a href="{% url 'loginType' %}">Sign In</a></li>
+          <li><a href="{% url 'TypePage' %}">Sign Up</a></li>
           </div>
-          <div class="search-icon">
+          <!-- <div class="search-icon">
           <span class="fas fa-search"></span></div>
           <div class="cancel-icon">
-          <span class="fas fa-times"></span></div>
-          <form action="#">
+          <span class="fas fa-times"></span></div> -->
+          <!-- <form action="#">
                   <input type="search" class="search-data" placeholder="Search" required>
                   <button type="submit" class="fas fa-search"></button>
-                </form>
+                </form> -->
           </nav>
         </header>
         <div class="container">
@@ -61,10 +61,10 @@ body{
                     <h3>Choose Your Type </h3>
                     <div class="row">
                         <aside class="col-6">
-                            <a href="{% url 'customer' %}" class="btn btn-danger"><i class="fas fa-user"></i> | Customer</a>
+                            <a href="{% url 'login' %}" class="btn btn-danger"><i class="fas fa-user"></i> | Customer Login</a>
                         </aside>
                         <aside class="col-6">
-                            <a href="{% url 'RegRestaurant' %}" class="btn btn-danger"><i class="fas fa-utensils"></i> | Restaurant</a>
+                            <a href="{% url 'login2' %}" class="btn btn-danger"><i class="fas fa-utensils"></i> | Restaurant Login</a>
     
                         </aside>
                     </div>
