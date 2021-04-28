@@ -72,8 +72,14 @@
             <li><a href="#">Foods</a></li>
             <li><a href="{% url 'Restaurant' %}">Restaurant</a></li>
             <li><a href="#">Feedback</a></li>
-            <li><a href="{% url 'login' %}">Sing In</a></li>
-            <li><a href="{% url 'TypePage' %}">Sing Up</a></li>
+            <li><a href="{% url 'loginType' %}">Sign In</a></li>
+            <li><a href="{% url 'TypePage' %}">Sign Up</a></li>
+            <!-- {% for i in Restobject %}
+              <p style="color:orange">{{i.R_Email}}</p>
+            {% endfor %} -->
+            <!-- {% for i in Restobject %}
+              <p style="color: orange;">Hello, {{i.R_Email}}</p>
+            {% endfor %} -->
         </div>
         <div class="search-icon"><span class="fas fa-search"></span></div>
         <div class="cancel-icon"><span class="fas fa-times"></span></div>
