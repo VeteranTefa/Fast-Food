@@ -182,8 +182,8 @@
           <h4>Foods<h4>
       </div>
 
-      <div class="container-fluid" id="Restaurants-Section">
-        <div class="row">
+      <div class="container-fluid" id="Restaurants-Section" >
+        <div class="row" style=" margin-left: 3%;">
           {% for F in Foods %}
             <div class="card" style="width:250px;">
                 <div class="card-header">
@@ -196,19 +196,15 @@
                       Rate : {{F.F_Rate}} <span class="fa fa-star checked"></span>
                     </h6>
                 </div>
-                <div class="card-footer">
-                    <form action="{% url 'OrderPage' %}" method="POST ">{% csrf_token %}
-                              <input type="button" style="display:none;" name='search' value={{F.id}} >
-                            <button type="submit" class="btn btn-primary">See more</button>
-                    </form>
-                    {% comment %} <a class="btn btn-primary" href="{% url 'RDFPage' %}">Order</a> {% endcomment %}
+                <div>
+                      <a class="btn btn-primary" href="/OrderPage/{{F.id}}">see more </a>
                 </div>
             </div>
           {% endfor %}
         </div>
         
 
-        <div>
+        {% comment %} <div>
             <button class="btn btn-primary"> select</button>
             <hr>
             <div class="form-check">
@@ -231,7 +227,7 @@
                 Checked
                 </label>
             </div>
-        </div>
+        </div> {% endcomment %}
 
       </div>
 
@@ -245,8 +241,8 @@
           <h4>Restaurants<h4>
       </div>
 
-      <div class="container-fluid" id="Restaurants-Section">
-        <div class="row">
+      <div class="container-fluid" id="Restaurants-Section" > 
+        <div class="row" style=" margin-left: 3%;" >
           {% for R in Restobject %}
             <div class="card" style="width:250px;">
                 <div class="card-header">
@@ -267,7 +263,7 @@
         </div>
         
 
-        <div>
+        {% comment %} <div>
             <button class="btn btn-primary"> select</button>
             <hr>
             <div class="form-check">
@@ -290,7 +286,7 @@
                 Checked
                 </label>
             </div>
-        </div>
+        </div> {% endcomment %}
 
       </div>
 

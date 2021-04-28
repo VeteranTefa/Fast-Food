@@ -4,7 +4,7 @@ import re
 from django.contrib import messages
 from django.urls import path
 from django.views.decorators.csrf import csrf_exempt
-from .models import Restaurant,FoodItem
+from .models import Restaurant,FoodItem,testModel
 
 
 # Create your views here.
@@ -63,10 +63,30 @@ def Outer_SearchBox(request):
         return render(request, 'Mubarak html files/test.html', {})
 
 
+def index(request, id):
+    # itemId = testModel.objects.all()
+    tesItem= testModel.objects.get(Mid=id)
+    print(tesItem)
+    return render(request, 'Mubarak html files/base.html', {
+        # 'item': item.It_Name,
+        # 'itemId': itemId,
+        'tesItem': tesItem.MName ,
+          
+    })
 
-def OrderPage(request):
 
-    return render(request, ' Mubarak html files/OrdersPage.html', {})
+def OrderPage(request, id):
+    order = FoodItem.objects.get(id=id)
+    print(order)
+    return render(request, 'Mubarak html files/OrdersPage.html', {
+        'order': order,
+        'orderName': order.It_Name,
+        'orderKink': order.It_Kind,
+        'orderSize': order.It_Prise,
+        'orderDescription': order.It_Descrip,
+        'orderImages': order.F_Images,
+        'orderRate': order.F_Rate
+    })
 
 
               # mubarak workespace end here 
