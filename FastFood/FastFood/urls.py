@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static 
-from fastfoodapp.views import mainpage,typepage,restaurant_Reg,restaurant,addmeal,editmeal,delete,afterReg,login,customer_reg,Rdessert,curentuser,User,Rmeal,Outer_SearchBox,SearchBox,OrderPage,Aboutus,loginRestuarnt,loginType,newUser,index,RestaurantsPage,ordertype,checktype
+from fastfoodapp.views import mainpage,typepage,restaurant_Reg,restaurant,addmeal,delete,afterReg,login,customer_reg,Rdessert,curentuser,User,Rmeal,Outer_SearchBox,SearchBox,OrderPage,Aboutus,loginRestuarnt,loginType,newUser,index,RestaurantsPage,ordertype,checktype,editmeal
 
 
 
