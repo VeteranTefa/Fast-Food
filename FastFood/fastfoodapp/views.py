@@ -144,11 +144,9 @@ def addmeal(request):
 
 
 def delete(request,id):
-#DELETD FROM DATABASE
-    if request.method == 'POST':
-        obj = FoodItem.objects.get(id=id)
-        obje.delete()
-        return redirect('restaurant.html')
+    obj = FoodItem.objects.get(id=id)
+    obj.delete()
+    return redirect('/restaurant')
 
 
 def afterReg(request):
