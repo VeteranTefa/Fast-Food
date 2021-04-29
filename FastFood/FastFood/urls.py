@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static 
-from fastfoodapp.views import mainpage,typepage,restaurant_Reg,restaurant,addmeal,editmeal,delete,afterReg,login,customer_reg,Rdessert,  curentuser,User,Rmeal,Outer_SearchBox,SearchBox,OrderPage,Aboutus,loginRestuarnt,loginType,newUser,index
+from fastfoodapp.views import mainpage,typepage,restaurant_Reg,restaurant,addmeal,editmeal,delete,afterReg,login,customer_reg,Rdessert,curentuser,User,Rmeal,Outer_SearchBox,SearchBox,OrderPage,Aboutus,loginRestuarnt,loginType,newUser,index,RestaurantsPage,ordertype,checktype
 
 
 
@@ -46,7 +46,11 @@ urlpatterns = [
     path('loginType/',loginType ,name="loginType"),
     path('newuser/',newUser ,name="newuser"),
     path('index/<int:id>',index,name="index"),
+    path('RestaurantsPage/<int:id>',RestaurantsPage ,name="RestaurantsPage"),
+    path('ordertype',ordertype,name="ordertype"),
+    path('checktype',checktype,name="checktype"),
     # path('home',OrderPage,name="home"),
+
 
 
 
