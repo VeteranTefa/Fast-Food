@@ -150,6 +150,29 @@ def details(request):
 def customer(request):
     return render(request,'customer.html',{})
 
+def yourorders(request):
+    return render(request,'yourorders.html',{})
+
+def showorders(request,id):
+    oederObj = FoodItem.objects.get(id=id)
+    return render(request,'yourorders.html',{'oederObj' : oederObj})
+
+
+def editinfo(request,id):
+    customerObj = Customer.objects.get(id=id)
+    if request.method == 'POST':
+        cust_email=request.POST['cust_email']
+        cust_pass=request.POST['cust_pass']
+        cust_phone=request.POST['cust_phone']
+        
+        cust = Customer.objects.filter(id=customerObj.id).update(
+            C_Email = cust_email,
+            C_Password = cust_pass,
+            C_Phone = cust_phone
+        )
+
+    return render(request,'editCustInfo.html',{'customerObj' : customerObj})
+
 
 def restaurant(request):
 #DELETD FROM DATABASE
