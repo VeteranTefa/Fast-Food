@@ -75,16 +75,12 @@
             <img src="../static/fastfoodapp/images/img/pizza2.jpeg" alt="pizza.jpeg" style="width: 100%; height: 100%;margin: 0px;">
             <div class="centered">RESTURANT FOODS</div>
         </div>
+
         <div class="row" style="background-color:cornsilk;">
-            <div class="col-md-6">
-            <button type="button" class="btn btn-outline-dark "><a href="http://127.0.0.1:8000/restaurant/addmeal" style ="text-decoration-line: none; "> ADD MEAL </a></button>
-            </div>
-      
-            <div class="col-md-6">
-                <button type="button" class="btn btn-outline-dark ">OFFERS</button>
-            </div>
-    
-        </div> 
+          <div class="col-md-6">
+            <button type="button" class="btn btn-outline-success "><a href="http://127.0.0.1:8000/restaurant/addmeal" style ="text-decoration-line: none; color: rgb(126, 196, 21);"> ADD MEAL </a></button>
+          </div>
+        </div>
         
         <div class="container" style="background-color:rgb(255, 255, 245);">
 
@@ -93,26 +89,20 @@
           {% for meal in foods_details %}
 
                 <div id="blok" class=" col-md-6" method="POST">
-                    <img id="pro" src="../static/fastfoodapp/images/img/perger1.jpeg" alt="perger1.jpeg">
-                    <h4>Item_Name : CHICKEN BURGERS</h4>
-                    <h4>Item_Kind : LUNCH</h4>
-                    <h4> Item_Size : LARGe</h4>           
-                    <button  id="ord" type="submit" class="btn btn-danger">DELETE</button>
-              
+                    <img id="pro" src="{{meal.F_Images.url}}" >
+                    <h4>Item_Name : {{meal.It_Name}}</h4>
+                    <h4>Item_Kind : {{meal.It_Kind}}</h4>
+                    <h4> Item_Size : {{meal.It_Size}}</h4> 
+                    <h4> Item_Prise : {{meal.It_Prise}}</h4> 
+                    <h4> Item_old_Prise : {{meal.It_Prise}}</h4> 
+                    <h4> Item_Descrip : {{meal.It_Descrip}}</h4> 
+                    
+                    <button id="ord" class="btn btn-danger"> <a href="/restaurant/{{meal.id}}" style="color: crimson ;text-decoration-line: none; "> DELETE</a></button>
+                      <button id="ord" class="btn btn-outline-primary "><a href="/restaurant/editmeal/{{meal.id}}" style ="text-decoration-line: none; ">make OFFER </a></button>
                 </div>
-        
-                <div id="blok" class="col-md-6" method="POST">
-                    <img id="pro" src="../static/fastfoodapp/images/img/perger2.jpeg" alt="perger2.jpeg">
-                    <h4>Item_Name : BEEF BURGERS</h4>
-                    <h4>Item_Kind : LUNCH</h5>
-                    <h4> Item_Size : LARGe</h4> 
-                    <button id="ord" type="submit" class="btn btn-danger">DELETE</button>
-                </div>
-          {% endfor %}
+          {%endfor%}
 
-                {% for meal in foods_details %}
-
-                {% endfor %}
+               
 
             </div>
             
