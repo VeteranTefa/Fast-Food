@@ -186,13 +186,30 @@ def addmeal(request):
         )
     return render(request,'addmeal.html',{})
 
+def editmeal(request,id):
+    obj = FoodItem.objects.get(id=id)
+  
+    if request.method == 'POST':
+        it_name = request.POST['it_name']
+        it_size = request.POST['it_size']
+        it_kind = request.POST['it_kind']
+        it_prise = request.POST['it_prise']
+        it_descrip = request.POST['it_descrip']
+
+        foods = FoodItem.objects.filter(id=obj.id).update(
+            It_Name = it_name,
+            It_Size = it_size,
+            It_Kind = it_kind,
+           It_Prise = it_prise,
+           It_Descrip = it_descrip
+        )
+    return render(request,'editmeal.html',{'obj' : obj})
+
 
 def delete(request,id):
-#DELETD FROM DATABASE
-    if request.method == 'POST':
-        obj = FoodItem.objects.get(id=id)
-        obje.delete()
-        return redirect('restaurant.html')
+    obj = FoodItem.objects.get(id=id)
+    obj.delete()
+    return redirect('/restaurant')
 
 
 def afterReg(request):

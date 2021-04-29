@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{% static 'fastfoodapp/css/addmeal.css' %}"> 
 
 
-    <title>Add Meals</title>
+    <title> Meals OFEER</title>
 
 <script>
     const menuBtn = document.querySelector(".menu-icon span");
@@ -76,31 +76,27 @@
                 </div>
             </div>
             
-            <form id="add" method="POST" style="margin-top: 2%;" >
+            <form id="add" method="POST" style="margin-top: 2%;" action="/restaurant/editmeal/{{obj.id}}" >
                 {% csrf_token %}
-                <label>Meal Name</label>
-                <input type="text" class="form-control" name="item_name" id="id_item_name">
-                <br>
-                <label>Meal Kind</label>
-                <input type="text" class="form-control" name="item_kind" id="id_item_kind" >
-                <br>
-                <label>Meal Size</label>
-                <input type="text" class="form-control" name="item_size" id="id_item_size" >
-                <br>
-                
-                <label>Meal Prise</label>
-                <input type="text" class="form-control" name="item_prise" id="id_item_prise" >
-                <br>
-                <label>Meal Photo</label>
-                <input type="file" class="form-control" name="item_Image" id="id_item_image" >
-                <br>
-                <label>simple Description</label>
-                <textarea class="form-control" type="text" name="item_descrip" id="id_item_descrip" cols="30" rows="5"></textarea>
-                <br>
-                
-                <div style=" text-align:right"  class=" col-md-12">
-                    <button type="submit" class="btn-lg btn-success" >ADDMEAL</button>
-                </div>
+                    <label>Meal Name</label>
+                    <input type="text" class="form-control" name="it_name" id="id_it_name" value="{{obj.It_Name}}">
+                    <br>
+                    <label>Meal Kind</label>
+                    <input type="text" class="form-control" name="it_kind" id="id_it_kind" value="{{obj.It_Kind}}">
+                    <br>
+                    <label>Meal Size</label>
+                    <input type="text" class="form-control" name="it_size" id="id_it_size" value="{{obj.It_Size}}">
+                    <br>
+                    <label>Meal Prise</label>
+                    <input type="text" class="form-control" name="it_prise" id="id_it_prise" value="{{obj.It_Prise}}">
+                    <br>
+                    <label>simple Description</label>
+                    <textarea class="form-control" type="text" name="it_descrip" id="id_it_descrip" cols="30" rows="5" value="{{obj.It_Descrip}}"></textarea>
+                    <br>
+                    
+                    <div style=" text-align:right"  class=" col-md-12">
+                        <button type="submit" class="btn-lg btn-success" >UPDATE</button>
+                    </div>
             </form>
 
             <div class="row" >
