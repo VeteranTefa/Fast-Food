@@ -45,7 +45,7 @@ def SearchBox(request):
     print("hi")
     if request.method == "GET":
         searched = request.GET.get('searched')
-        FList = FoodItem.objects.all().filter(It_Name=searched)
+        FList = FoodItem.objects.all().filter(It_Name__iexact=searched)
         print(FList)
         return render(request, 'Mubarak html files/test.html', {'searched':searched, 'FList' : FList})
     else:
@@ -56,7 +56,7 @@ def SearchBox(request):
 def Outer_SearchBox(request):
     if request.method == "POST":
         outer_search = request.POST.get('searched')
-        Flist_two= FoodItem.objects.all().filter(It_Name=outer_search)
+        Flist_two= FoodItem.objects.all().filter(It_Name__iexact=outer_search)
         # print(Flist_two)
         return render(request, 'Mubarak html files/test.html', {'outer_search': outer_search, 'Flist_two':Flist_two})
     else:
