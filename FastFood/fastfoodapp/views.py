@@ -153,6 +153,11 @@ def customer(request):
 def yourorders(request):
     return render(request,'yourorders.html',{})
 
+def showorders(request,id):
+    oederObj = FoodItem.objects.get(id=id)
+    return render(request,'yourorders.html',{'oederObj' : oederObj})
+
+
 def editinfo(request,id):
     customerObj = Customer.objects.get(id=id)
     if request.method == 'POST':
