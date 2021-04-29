@@ -4,7 +4,7 @@ import re
 from django.contrib import messages
 from django.urls import path
 from django.views.decorators.csrf import csrf_exempt
-from .models import Restaurant,FoodItem,testModel
+from .models import Restaurant,FoodItem,testModel,Customer
 
 
 # Create your views here.
@@ -24,7 +24,7 @@ def mainpage(request):
 
     # Food Page function 
 def Rdessert(request):
-    dessert = FoodItem.objects.filter(It_Kind='Dessert')
+    dessert = Restaurant.objects.all()
     # print("hi")
     # for d in dessert:
     #     print("hello")
@@ -34,8 +34,8 @@ def Rdessert(request):
 
 
 def Rmeal(request):
-    meals = FoodItem.objects.all().filter(It_Kind='Meals')
-    # print(meals)
+    meals = FoodItem.objects.all()
+    print(meals)
     return render(request, 'Mubarak html files/RMFPage.html', {'meals':meals})
 
 
@@ -87,6 +87,50 @@ def OrderPage(request, id):
         'orderImages': order.F_Images,
         'orderRate': order.F_Rate
     })
+
+def ordertype(request):
+    if request.method == "POST":
+        return render(request, 'Mubarak html files/ordertype.html', {})
+    if request.method == "GET":
+        return render(request, 'Mubarak html files/ordertype.html', {})
+    
+
+
+def checktype(request):
+    if request.method == "GET":
+        getEmail = request.GET.get('Email')
+        getPass  = request.GET.get('password')
+        try:
+            checkEmail = Customer.objects.get(C_Email=getEmail)
+            checkpass  = Customer.objects.get(C_Password=getPass)
+
+            return render(request, 'Mubarak html files/checkResult.html', {
+                'rightEmail': checkEmail,
+                'rightPassword' : checkpass,
+            })
+
+        except models.Customer.DoesNotExist:
+            return render(request, 'Mubarak html files/checkResult.html', {
+                'wrongEmail': 'Wrong Email',
+                'wrongPassword' : 'Wrong password', 
+            })  
+
+
+
+def RestaurantsPage(request, id ):
+    Restaurants = Restaurant.objects.get(id=id)
+    return render(request, 'Mubarak html files/ShowRestaurants.html', {
+        'restaurant':Restaurants,
+        'R_Image'   : Restaurants.R_Image,
+        'R_Name'    : Restaurants.R_Name,
+        'R_Type'    : Restaurants.R_Type,
+        'R_Email'   : Restaurants.R_Email,
+        'R_Phone'   : Restaurants.R_Phone,
+        'R_Rate'    : Restaurants.R_Rate,
+        'R_City'    : Restaurants.R_City,
+        'R_Area'    : Restaurants.R_Area,
+    })
+
 
 
               # mubarak workespace end here 
