@@ -69,11 +69,10 @@
         <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none;">Otlob</a>
         <div class="nav-items">
             <li><a href="{% url 'aboutus'%}">About Us</a></li>
-            <li><a href="#">Foods</a></li>
-            <li><a href="{% url 'Restaurant' %}">Restaurant</a></li>
-            <li><a href="#">Feedback</a></li>
-            <li><a href="{% url 'loginType' %}">Sign In</a></li>
-            <li><a href="{% url 'TypePage' %}">Sign Up</a></li>
+            <li><a href="{% url 'Rmeals'%}">Foods</a></li>
+            <li><a href="{% url 'RDFPage' %}">Reastaurants</a></li>
+            <li><a href="{% url 'loginType' %}">log In</a></li>
+            <li><a href="{% url 'TypePage' %}">log Up</a></li>
             <!-- {% for i in Restobject %}
               <p style="color:orange">{{i.R_Email}}</p>
             {% endfor %} -->
@@ -256,7 +255,7 @@
                     </h6>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-primary" href="{% url 'RDFPage' %}">Visite</a>
+                    <a class="btn btn-primary" href="/RestaurantsPage/{{R.id}}">Visite</a>
                 </div>
             </div>
           {% endfor %}

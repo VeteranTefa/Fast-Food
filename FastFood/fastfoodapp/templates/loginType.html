@@ -31,19 +31,17 @@ body{
 <body>
     
         <header>
-            <nav>
-                <div class="menu-icon">
+    <nav>
+        <div class="menu-icon">
           <span class="fas fa-bars"></span></div>
-          <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none;">
-          Otlob</a>
+          <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none;">Otlob</a>
           <div class="nav-items">
-          <li><a href="{% url 'aboutus'%}">About Us</a></li>
-          <li><a href="#">Foods</a></li>
-          <li><a href="{% url 'Restaurant' %}">Restaurant</a></li>
-          <li><a href="#">Feedback</a></li>
-          <li><a href="{% url 'loginType' %}">Sign In</a></li>
-          <li><a href="{% url 'TypePage' %}">Sign Up</a></li>
-          </div>
+             <li><a href="{% url 'aboutus'%}">About Us</a></li>
+            <li><a href="{% url 'Rmeals'%}">Foods</a></li>
+            <li><a href="{% url 'RDFPage' %}">Reastaurants</a></li>
+            <li><a href="{% url 'loginType' %}">log In</a></li>
+            <li><a href="{% url 'TypePage' %}">log Up</a></li>
+        </div>
           <!-- <div class="search-icon">
           <span class="fas fa-search"></span></div>
           <div class="cancel-icon">
@@ -52,7 +50,7 @@ body{
                   <input type="search" class="search-data" placeholder="Search" required>
                   <button type="submit" class="fas fa-search"></button>
                 </form> -->
-          </nav>
+    </nav>
         </header>
         <div class="container">
         <div class="row">
