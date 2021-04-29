@@ -72,50 +72,28 @@
           <button type="submit" class="fas fa-search"></button>
         </form>
   </nav>
-
-    <div class="container" style="background-color:rgb(255, 255, 245);">
-
-            <div class="row" style="margin-top: 2%; background-color: blanchedalmond; text-align: center; padding: 1%;" >
-                <div  class=" col-sm-12">
-                    <h1> MEAL OFFER</h1>
-                </div>
-            </div>
-            
-            <form id="add" method="POST" style="margin-top: 2%;" action="/restaurant/editmeal/{{obj.id}}" >
-                {% csrf_token %}
-                    <label>Meal Name</label>
-                    <input type="text" class="form-control" name="it_name" id="id_it_name" value="{{obj.It_Name}}">
-                    <br>
-                    <label>Meal Kind</label>
-                    <input type="text" class="form-control" name="it_kind" id="id_it_kind" value="{{obj.It_Kind}}">
-                    <br>
-                    <label>Meal Size</label>
-                    <input type="text" class="form-control" name="it_size" id="id_it_size" value="{{obj.It_Size}}">
-                    <br>
-                    <label>Meal Prise</label>
-                    <input type="text" class="form-control" name="it_prise" id="id_it_prise" value="{{obj.It_Prise}}">
-                    <br>
-                    <label>simple Description</label>
-                    <textarea class="form-control" type="text" name="it_descrip" id="id_it_descrip" cols="30" rows="5" value="{{obj.It_Descrip}}"></textarea>
-                    <br>
-                    
-                    <div style=" text-align:right"  class=" col-md-12">
-                        <button type="submit" class="btn-lg btn-success" >UPDATE</button>
-                    </div>
-            </form>
-
-            <div class="row" >
-
-                <div style=" text-align:left"  class=" col-md-6">
-                    <button type="submit" class="btn-lg btn-secondary" ><a style ="text-decoration-line: none; color: white;" href="http://127.0.0.1:8000/restaurant">Back To Restaurant</a></button>
-                </div>
-            
-                
-            </div>
-
+    <div class="container" style="background-color: rgb(245, 194, 67) ;">
+  <form id="add" method="POST" style="margin-top: 2%;padding: 2%;" action="/yourorders/editCustInfo/{{customerObj.id}}" >
+    {% csrf_token %}
+        <label>Change_Email</label>
+        <input type="tel" class="form-control" name="cust_email" id="id_cust_email" value="{{customerObj.Change_Email}}">
+        <br>
+        <label>Change_Password</label>
+        <input type="password" class="form-control" name="cust_pass" id="id_cust_pass" value="{{customerObj.C_Password}}">
+        <br>
+        <label>Change_Phone</label>
+        <input type="number" class="form-control" name="cust_phone" id="id_cust_phone" value="{{customerObj.C_Phone}}">
+        <br>       
+        <div style=" text-align:right"  class=" col-md-12">
+            <button type="submit" class="btn-lg btn-success" >UPDATE</button>
         </div>
+    </form>
+    <div class="row" >
 
-
+        <div style=" text-align:left"  class=" col-md-6">
+            <button type="submit" class="btn-lg btn-secondary" ><a style ="text-decoration-line: none; color: white;" href="http://127.0.0.1:8000/yourorders">Back To Yourorders</a></button>
+        </div>        
     </div>
+</div>
 </body>
 </html>
