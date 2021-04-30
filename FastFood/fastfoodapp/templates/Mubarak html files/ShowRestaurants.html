@@ -70,8 +70,20 @@
         {% comment %} background-size: 1800px 900px; {% endcomment %}
 
     }
-     .inputClass {
-            pointer-events: none; 
+     input[type="text"],input[type="email"] {
+          min-width: 210px;
+          font-weight: bolder;
+          font-size: 17px;
+          padding: 7px;
+          pointer-events: none; 
+        }
+        input[type='submit']{
+          background-color: red;
+          min-width: 255px;
+          font-weight: bolder;
+          font-size: 17px;
+          padding: 7px;
+          
         }
 
     </style>
@@ -125,7 +137,7 @@
       cancelBtn.classList.add("show");
     }
   </script>
-
+<!-- 
     <div class="jumbotron jumbotron-fluid bg-success text-center pic1" id="one">
     <div class="container" style="background-color: red; text-align: center;height: 100%;">
         <form action="/action_page.php">
@@ -146,7 +158,60 @@
             <input type="submit" value="Submit">
         </form>
     </div>
-    </div>
+    </div> -->
+    <table class="table table-striped" style="margin-top: 80px;">
+      <thead>
+        <tr>
+          
+        
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <form method="POST" action="">
+            {% csrf_token %}
+            <th scope="row">Restaurant Name</th>
+            <td><input type="text" value={{R_Name}}></td>
+      
+        </tr>
+        <tr>
+            <th scope="row">Restaurant Type</th>
+            <td><input type="text" value={{R_Type}}></td>
+        
+        </tr>
+        <tr>
+            <th scope="row">Restaurant Email</th>
+            <td><input type="email" value={{R_Email}}></td>
+      
+        </tr>
+        <tr>
+            <th scope="row">Restaurant Phone</th>
+            <td><input type="text" value={{R_Phone}}></td>
+      
+        </tr>
+        <tr>
+            <th scope="row">Restaurant City</th>
+            <td><input type="text" value={{R_City}}></td>
+        
+        </tr>
+        <tr>
+            <th scope="row">Restaurant Area</th>
+            <td><input type="text" value={{R_Area}}></td>
+      
+        </tr>
+        <tr>
+          <th scope="row">Restaurant Rate</th>
+          <td><input type="text" value={{R_Rate}}></td>
+    
+      </tr>
+      <tr>
+        <th scope="row"></th>
+        <td><input type="submit"></td>
+  
+    </tr>
+      </form>
+      </tbody>
+    </table>
 
 
 

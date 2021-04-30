@@ -71,17 +71,13 @@
             <li><a href="{% url 'aboutus'%}">About Us</a></li>
             <li><a href="{% url 'Rmeals'%}">Foods</a></li>
             <li><a href="{% url 'RDFPage' %}">Reastaurants</a></li>
-            <li><a href="{% url 'loginType' %}">log In</a></li>
-            <li><a href="{% url 'TypePage' %}">log Up</a></li>
-            <!-- {% for i in Restobject %}
-              <p style="color:orange">{{i.R_Email}}</p>
-            {% endfor %} -->
-            <!-- {% for i in Restobject %}
-              <p style="color: orange;">Hello, {{i.R_Email}}</p>
-            {% endfor %} -->
+            <li><a href="{% url 'loginType' %}">Sign In</a></li>
+            <li><a href="{% url 'TypePage' %}">Sign Up</a></li>
+            
+      
         </div>
-        <div class="search-icon"><span class="fas fa-search"></span></div>
-        <div class="cancel-icon"><span class="fas fa-times"></span></div>
+        <!-- <div class="search-icon"><span class="fas fa-search"></span></div>
+        <div class="cancel-icon"><span class="fas fa-times"></span></div> -->
     </nav>
   
 <script>
@@ -255,7 +251,7 @@
                     </h6>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-primary" href="/RestaurantsPage/{{R.id}}">Visite</a>
+                    <a class="btn btn-primary" href="/RestaurantsPage/{{R.id}}">Visit</a>
                 </div>
             </div>
           {% endfor %}
