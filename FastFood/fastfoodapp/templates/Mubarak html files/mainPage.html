@@ -91,6 +91,7 @@
         <div class="nav-items" style="margin-top: 30px;">
             <li><a href="{% url 'aboutus'%}">About Us</a></li>
             <li><a href="{% url 'Rmeals'%}">Foods</a></li>
+<<<<<<< HEAD
             <li><a href="{% url 'RDFPage' %}">Reastaurants</a></li></div>
             <div class="dropdown">
               <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-weight: bold;">
@@ -109,9 +110,16 @@
             <!-- {% for i in Restobject %}
               <p style="color: orange;">Hello, {{i.R_Email}}</p>
             {% endfor %} -->
+=======
+            <li><a href="{% url 'RDFPage' %}">Reastaurants</a></li>
+            <li><a href="{% url 'loginType' %}">Sign In</a></li>
+            <li><a href="{% url 'TypePage' %}">Sign Up</a></li>
+            
+      
+>>>>>>> 5248b0622df66edf28e398f54d2c9a6bee24c5ba
         </div>
-        <div class="search-icon"><span class="fas fa-search"></span></div>
-        <div class="cancel-icon"><span class="fas fa-times"></span></div>
+        <!-- <div class="search-icon"><span class="fas fa-search"></span></div>
+        <div class="cancel-icon"><span class="fas fa-times"></span></div> -->
     </nav>
   
 <script>
@@ -285,7 +293,7 @@
                     </h6>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-primary" href="/RestaurantsPage/{{R.id}}">Visite</a>
+                    <a class="btn btn-primary" href="/RestaurantsPage/{{R.id}}">Visit</a>
                 </div>
             </div>
           {% endfor %}

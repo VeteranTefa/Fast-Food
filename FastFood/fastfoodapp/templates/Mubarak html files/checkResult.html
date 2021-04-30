@@ -122,8 +122,8 @@
   <div class="container" style=" height:400px;"> 
       {% if rightEmail and rightPassword %}
           <div class="container">
-                <div>
-                      your odrer commite the restaurant will communicate with yoy back to 
+                <div style="margin-top: 80px;">
+                      your odrer commite the restaurant will communicate with you back to 
                       <a href="{% url 'MainPage' %}" class="btn btn-primary">Home Page</a>
                 </div>
           </div>
@@ -132,7 +132,7 @@
           <div>
               <p>{{wrongEmail}}</p>
               <p>{{wrongPassword}}</p>
-              <button class="btn btn-primary"> <a href="{% url 'ordertype'%}">another try</a> </button>
+              <button class="btn btn-warning"> <a href="{% url 'ordertype'%}">another try</a> </button>
           </div>
       {% endif %}
 
