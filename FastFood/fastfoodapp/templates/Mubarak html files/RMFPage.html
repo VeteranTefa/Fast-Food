@@ -14,6 +14,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <style>
+        hr{
+            display: hide;
+        }
         footer {
             background: #3a3a3a;
             color: #fff;
@@ -26,34 +29,47 @@
             color: #cddc39;
             text-decoration: none;
         }
+        .dropdown{
+    
+ /* margin-top:10px ;*/
+  background-color: #E08A1A;
+  color: #fff;
+}
+.dropdown-menu {
+  background-color:#3E3E3B;}
+  .dropdown-item{
+  color: #E08A1A ;
+  font-weight: bold;
+  }
   </style>
 </head>
 <body>
 
     <nav>
           <div class="menu-icon"><span class="fas fa-bars"></span></div>
-          <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none;">Otlob</a>
-          <div class="nav-items">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Foods</a></li>
+          <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none; color: chocolate;">Otlob</a>
+          <div class="nav-items" >
+              <li><a href="{% url 'aboutus'%}">About Us</a></li>
+              <li><a href="{% url 'Rmeals'%}">Foods</a></li>
               <li><a href="{% url 'Restaurant' %}">Restaurant</a></li>
-              <li><a href="#">Feedback</a></li>
-              <li><a href="#">Sing In</a></li>
-              <li><a href="{% url 'TypePage' %}">Sing Up</a></li>
-          </div>
+              <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-weight: bold;">
+                  MY Account
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="{% url 'loginType' %}">SING In</a>
+                  <a class="dropdown-item" href="{% url 'TypePage' %}">SING Up</a>
+                </div>
+              </div>
+
           <div class="search-icon"><span class="fas fa-search"></span></div>
           <div class="cancel-icon"><span class="fas fa-times"></span></div>
-      <form action="{% url 'search' %}" method="POST">{% csrf_token %}
+      <form action="{% url 'search' %}" method="POST" style="margin-left: 900px">{% csrf_token %}
                 <input type="search" class="search-data" placeholder="Search for Foods-Restaurants " name="searched" >
                 <button type="submit" class="fas fa-search"></button>
           </form>
-    </nav>
-    <style>
-        hr{
-            display: hide;
-        }
-    </style>
-
+          
+        </nav>
 
     <script>
         const menuBtn = document.querySelector(".menu-icon span");

@@ -116,12 +116,14 @@ margin-top: 6px;
   }*/
   #submit{
       margin-top: 6px;
+      color: rgb(110, 96, 96);
+   background-color: #e08a1a;
     
   }
-.btn.btn-warning:hover {
+#submit:hover {
    box-shadow: 2px 1px 2px 3px #99ccff;
-   background:red;
-   color:blue;
+   color: rgb(240, 16, 16);
+   background-color: #e08a1a;
    transition: background-color 1.15s ease-in-out,border-color 1.15s ease-in-out,box-shadow 1.15s ease-in-out;
    
    

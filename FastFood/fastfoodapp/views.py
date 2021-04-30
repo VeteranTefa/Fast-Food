@@ -357,3 +357,16 @@ def loginRestuarnt(request):
 
 def loginType(request):
     return render(request,'loginType.html',{})
+#function for forget password page#
+def forgetpass(request):
+    return render(request,'forgetpassword.html') 
+
+def changepass(request):
+    if request.method=="POST":
+        try:
+            Userdetail=models.Customer.objects.get(C_Email=request.POST['email'])
+            request.session['email']=Userdetail.C_Email
+            return render(request,'Mubarak html files/mainpage.html')
+        except models.Customer.DoesNotExist as e:
+            messages.success(request,'username invaild.........') 
+    return render(request,'forgetpassword.html')            
