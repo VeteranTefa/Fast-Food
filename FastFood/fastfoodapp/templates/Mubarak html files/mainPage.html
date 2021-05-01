@@ -9,18 +9,18 @@
     <link rel="stylesheet" href="{% static 'fastfoodapp/css/mainpage.css' %}"> 
     <link rel="stylesheet" href="{% static 'fastfoodapp/css/index.css' %}"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-                {% comment %} Rating link {% endcomment %}
+              <!--- {% comment %} Rating link {% endcomment %}-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                {% comment %}  {% endcomment %}
+                <!--{% comment %}  {% endcomment %}-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
-    {% comment %} Rating style {% endcomment %}
+    /*{% comment %} Rating style {% endcomment %}*/
     .checked {
       color: orange;
     }
-    {% comment %} Footer style {% endcomment %}
+  /*  {% comment %} Footer style {% endcomment %}*/
     footer {
     background: #3a3a3a;
     color: #fff;
@@ -33,7 +33,7 @@
     color: #cddc39;
     text-decoration: none;
     }
-    {% comment %} Card style {% endcomment %}
+   /* {% comment %} Card style {% endcomment %}*/
     #Restaurants-Section , #HomeMade-Section{
       display: flex;
     }
@@ -43,7 +43,8 @@
       text-align: center;
     }
     .card{
-      {% comment %} background-color: grey; {% endcomment %}
+     /* {% comment %} */
+      background-color: grey; /*{% endcomment %}*/
       margin: 50px;
     }
     @media only screen and (max-width: 600px) {
@@ -58,6 +59,28 @@
     }
     
   }
+  .dropdown{
+  margin-left: 950px;
+  margin-top:10px ;
+  background-color: #E08A1A;
+  color: #fff;
+}
+.dropdown-menu {
+  background-color:#3E3E3B;}
+  .dropdown-item{
+  color: #E08A1A ;
+  font-weight: bold;
+  }
+  .card:hover{
+    box-shadow: 0 50px 50px 0 rgba(248, 101, 3, 0.959), 0 50px 50px 0 rgba(250, 124, 6, 0.918);
+  }
+  .container-fluid .row:hover{
+          transform: skew(20deg); 
+          transition: all 3s;
+          box-shadow: 0 50px 50px 0 rgba(248, 101, 3, 0.959), 0 50px 50px 0 rgba(250, 124, 6, 0.918);
+
+
+                    }
 
     </style>
     
@@ -66,18 +89,20 @@
     
     <nav>
         <div class="menu-icon"><span class="fas fa-bars"></span></div>
-        <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none;">Otlob</a>
+        <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none;color: #E08A1A">Otlob</a>
         <div class="nav-items">
             <li><a href="{% url 'aboutus'%}">About Us</a></li>
             <li><a href="{% url 'Rmeals'%}">Foods</a></li>
-            <li><a href="{% url 'RDFPage' %}">Reastaurants</a></li>
-            <li><a href="{% url 'loginType' %}">Sign In</a></li>
-            <li><a href="{% url 'TypePage' %}">Sign Up</a></li>
-            
-      
-        </div>
-        <!-- <div class="search-icon"><span class="fas fa-search"></span></div>
-        <div class="cancel-icon"><span class="fas fa-times"></span></div> -->
+            <li><a href="{% url 'RDFPage' %}">Reastaurants</a></li> </div>
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-weight: bold;">
+                MY Account
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{% url 'loginType' %}">SING In</a>
+                <a class="dropdown-item" href="{% url 'TypePage' %}">SING Up</a>
+              </div>
+              </div>
     </nav>
   
 <script>
@@ -178,9 +203,9 @@
       </div>
 
       <div class="container-fluid" id="Restaurants-Section" >
-        <div class="row" style=" margin-left: 3%;">
+        <div class="row" style=" margin-left: 370px; background-color: #E08A1A;text-align: center;">
           {% for F in Foods %}
-            <div class="card" style="width:250px;">
+            <div class="card" style="width:250px;text-align: center;">
                 <div class="card-header">
                     <img class="card-img-top" src="{{F.F_Images.url}}" style="height:200px; height:200px;" alt="card image">
                 </div>
@@ -237,7 +262,7 @@
       </div>
 
       <div class="container-fluid" id="Restaurants-Section" > 
-        <div class="row" style=" margin-left: 3%;" >
+        <div class="row" style="margin-left: 370px; background-color: #E08A1A;text-align: center;">
           {% for R in Restobject %}
             <div class="card" style="width:250px;">
                 <div class="card-header">
