@@ -15,6 +15,7 @@ class Restaurant(models.Model):
     R_Area=models.CharField(max_length=200,default="Qena")
     R_Image = models.ImageField(upload_to='media/images', default="null")
     R_Rate= models.PositiveIntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    RImage_Cover = models.ImageField(upload_to='media/images', default="null")
 
 
 
@@ -117,16 +118,34 @@ class Receive(models.Model):
 
 
 
-class testModel(models.Model):
-    Mid = models.AutoField(primary_key=True)
-    MName = models.CharField(max_length=50)
 
-
-
-
-
-
+# class meal(models.Model):
+#     Mname = models.CharField(max_length=200)
+#     Mkind = models.CharField(max_length=200)
+#     shops = models.ManyToManyField('shop', through='khod')
+#     # Mprice = models.intgerField()
+#     def __str__(self):
+#         return self.Mname
     
 
 
+# class shop(models.Model):
+#     Sname = models.CharField(max_length=200)
+#     Scity = models.CharField(max_length=200)
+#     # provide = models.ForeignKey(meal, on_delete=models.CASCADE)
+#     meals = models.ManyToManyField('meal', through='khod')
+
+#     def __str__(self):
+#         return self.Sname
+    
+
+
+# class khod(models.Model):
+#     meal= models.ForeignKey(meal, on_delete=models.CASCADE)
+#     shop= models.ForeignKey(shop, on_delete=models.CASCADE)
+
+
+#     def __str__(self):
+#         return self.meal
+    
 

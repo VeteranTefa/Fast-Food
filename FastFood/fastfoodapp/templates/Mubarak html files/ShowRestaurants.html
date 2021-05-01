@@ -70,7 +70,7 @@
         {% comment %} background-size: 1800px 900px; {% endcomment %}
 
     }
-     input[type="text"],input[type="email"] {
+     {% comment %} input[type="text"],input[type="email"] {
           min-width: 210px;
           font-weight: bolder;
           font-size: 17px;
@@ -84,7 +84,7 @@
           font-size: 17px;
           padding: 7px;
           
-        }
+        } {% endcomment %}
 
     </style>
     
@@ -95,17 +95,11 @@
         <div class="menu-icon"><span class="fas fa-bars"></span></div>
         <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none;">Otlob</a>
         <div class="nav-items">
-           <li><a href="{% url 'aboutus'%}">About Us</a></li>
-            <li><a href="{% url 'Rmeals'%}">Foods</a></li>
-            <li><a href="{% url 'RDFPage' %}">Reastaurants</a></li>
-            <li><a href="{% url 'loginType' %}">log In</a></li>
-            <li><a href="{% url 'TypePage' %}">log Up</a></li>  
-            <!-- {% for i in Restobject %}
-              <p style="color:orange">{{i.R_Email}}</p>
-            {% endfor %} -->
-            <!-- {% for i in Restobject %}
-              <p style="color: orange;">Hello, {{i.R_Email}}</p>
-            {% endfor %} -->
+          <li style="margin-left: 80px;"><a href="{% url 'aboutus' %}">About Us</a></li>
+          <li style="margin-left: 80px;"><a href="{% url 'Rmeals' %}">Foods</a></li>
+          <li style="margin-left: 80px;"><a href="{% url 'RDFPage' %}">Reastaurants</a></li>
+          <li style="margin-left: 80px;"><a href="{% url 'loginType' %}">log In</a></li>
+          <li style="margin-left: 80px;"><a href="{% url 'TypePage' %}">log Up</a></li>  
         </div>
         <div class="search-icon"><span class="fas fa-search"></span></div>
         <div class="cancel-icon"><span class="fas fa-times"></span></div>
@@ -201,18 +195,34 @@
         </tr>
         <tr>
           <th scope="row">Restaurant Rate</th>
-          <td><input type="text" value={{R_Rate}}></td>
+          <td><input type="text" value={{R_Rate}}> <span class="fa fa-star checked"></td>
     
       </tr>
-      <tr>
+      {% comment %} <tr>
         <th scope="row"></th>
         <td><input type="submit"></td>
   
-    </tr>
+    </tr> {% endcomment %}
       </form>
       </tbody>
     </table>
 
+
+  <div class="container" id="sec-Two">
+      
+    <div class="col-md-12">
+        <div class="jumbotron bg-cover text-white" 
+          style="background: url('fastfoodapp/media/images/{{RImage_Cover}}') ,  linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), ">
+          <div class="container">
+            <h1 class="display-4">{{R_Name}}</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <hr class="my-4">
+            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            {% comment %} <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> {% endcomment %}
+          </div>
+        </div>
+    </div>
+  </div>
 
 
 

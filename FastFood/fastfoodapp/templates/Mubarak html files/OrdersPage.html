@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="{% static 'fastfoodapp/css/mainpage.css' %}"> 
     <link rel="stylesheet" href="{% static 'fastfoodapp/css/index.css' %}"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-                {% comment %} Rating link {% endcomment %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                {% comment %}  {% endcomment %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                {% comment %} Rating link {% endcomment %}
+    {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> {% endcomment %}
+                {% comment %}  {% endcomment %}
     <style>
     {% comment %} Rating style {% endcomment %}
     .checked {
@@ -44,7 +44,7 @@
     }
     .card{
       {% comment %} background-color: grey; {% endcomment %}
-      margin: 50px;
+      {% comment %} margin: 50px; {% endcomment %}
     }
     @media only screen and (max-width: 600px) {
     #food-left-side{
@@ -99,45 +99,15 @@
         <div class="menu-icon"><span class="fas fa-bars"></span></div>
         <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none;">Otlob</a>
         <div class="nav-items">
-           <li><a href="{% url 'aboutus'%}">About Us</a></li>
-            <li><a href="{% url 'Rmeals'%}">Foods</a></li>
-            <li><a href="{% url 'RDFPage' %}">Reastaurants</a></li>
-            <li><a href="{% url 'loginType' %}">log In</a></li>
-            <li><a href="{% url 'TypePage' %}">log Up</a></li>
-            <!-- {% for i in Restobject %}
-              <p style="color:orange">{{i.R_Email}}</p>
-            {% endfor %} -->
-            <!-- {% for i in Restobject %}
-              <p style="color: orange;">Hello, {{i.R_Email}}</p>
-            {% endfor %} -->
+            <li style="margin-left: 80px;"><a href="{% url 'aboutus'%}">About Us</a></li>
+            <li style="margin-left: 80px;"><a href="{% url 'Rmeals'%}">Foods</a></li>
+            <li style="margin-left: 80px;"><a href="{% url 'RDFPage' %}">Reastaurants</a></li>
         </div>
-        
     </nav>
   
 
   
-
-    <!-- <div class="jumbotron jumbotron-fluid bg-success text-center pic1" id="one">
-    <div class="container" style="background-color: red; text-align: center;height: 100%;">
-        <form>
-            <label for={{orderName}}>Order Name</label>
-            <input   class="inputClass" value={{orderName}}><br>
-            <label for={{orderKink}}>Order Kind</label>
-            <input   class="inputClass" value={{orderKink}}><br>
-            <label for={{orderSize}}>Order Size</label>
-            <input   class="inputClass" value={{orderSize}}><br>
-            <label for={{orderDescription}}>Order Description</label>
-            <input   class="inputClass" value={{orderDescription}}><br>
-            <label for={{orderRate}}>Order Rate</label>
-            <input   class="inputClass" value={{orderRate}}><br><br>
-        </form>
-        
-        <form action="{% url 'ordertype' %}" method="POST">{% csrf_token %}
-            <input type="submit" value="Order">
-        </form>
-        
-    </div>
-    </div> -->
+  
     <table class="table table-striped" style="margin-top: 80px;">
       <thead>
         <tr>
@@ -181,7 +151,6 @@
       </form>
       </tbody>
     </table>
-
 
 
 

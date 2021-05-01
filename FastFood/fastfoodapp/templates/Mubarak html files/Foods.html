@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 {% load static %}
+{% comment %} {% csrf_token %} {% endcomment %}
 <html lang="en">
 <head>
   <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'fastfoodapp/css/mainpage.css' %}"> 
     <link rel="stylesheet" href="{% static 'fastfoodapp/css/index.css' %}"> 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -25,32 +26,31 @@
             color: #cddc39;
             text-decoration: none;
         }
-        hr{
-            display: hide;
+        .checked {
+            color: orange;
         }
   </style>
 </head>
 <body>
 
     <nav>
-          <div class="menu-icon"><span class="fas fa-bars"></span></div>
-          <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none;">Otlob</a>
-          <div class="nav-items">
-           <li><a href="{% url 'aboutus'%}">About Us</a></li>
-            <li><a href="{% url 'Rmeals'%}">Foods</a></li>
-            <li><a href="{% url 'RDFPage' %}">Reastaurants</a></li>
-            <li><a href="{% url 'loginType' %}">log In</a></li>
-            <li><a href="{% url 'TypePage' %}">log Up</a></li>
-          </div>
-          <div class="search-icon"><span class="fas fa-search"></span></div>
-          <div class="cancel-icon"><span class="fas fa-times"></span></div>
-             <form action="{% url 'search' %}" method="POST">{% csrf_token %}
-                {% comment %} {% csrf_token %} {% endcomment %}
-                <input type="search" class="search-data" placeholder="Search for Foods-Restaurants " name="searched" >
-                <button type="submit" class="fas fa-search"></button>
-          </form>
+        <div class="menu-icon"><span class="fas fa-bars"></span></div>
+        <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none;">Otlob</a>
+        <div class="nav-items">
+            <li style="margin-left: 80px;"><a href="{% url 'aboutus'%}">About Us</a></li>
+            <li style="margin-left: 80px;"><a href="{% url 'Rmeals'%}">Foods</a></li>
+            <li style="margin-left: 80px;"><a href="{% url 'RDFPage' %}">Restaurant</a></li>
+        </div style="margin-left: 20px;">
+        <div class="search-icon"><span class="fas fa-search"></span></div>
+        <div class="cancel-icon"><span class="fas fa-times"></span></div>
+        <form action="{% url 'search' %}" method="POST">{% csrf_token %}
+            <input type="search" class="search-data" placeholder="Search for Foods-Restaurants " name="searched" >
+            <button type="submit" class="fas fa-search"></button>
+        </form>
     </nav>
+    <style>
 
+    </style>
 
 
     <script>
@@ -82,27 +82,32 @@
     </script>
 
 
-    <hr>
-    <hr>
 
 
-
-
-    <div  class="container" id="Food-cards">
-        <div class="row" style="margin-left: 40px;">
-            {% for r in dessert %}
-                <div class="card" style="width:300px ; margin-left: 50px;">
-                    <img class="card-img-top" src="{{r.R_Image.url}}" height=200px width=200px alt="Card image">
-                    <div class="card-body">
-                        <h4 class="card-title">{{r.R_Name}}</h4>
-                        <p class="card-text">{{r.R_City}}</p>
-                        <a href="#" class="btn btn-primary">See Description</a>
-                        <a href="#" class="btn btn-primary">Order</a>
+    <div  class="container" id="Food-cards" style="margin-top:10px;">
+        <div class="row" style="margin-left: 3%;">
+            {% for m in meals %}
+                <div class="card" style="width:300px; margin-left: 2%; margin-top: 2%;">
+                    <img class="card-img-top" src="{{m.F_Images.url}}" height=200px width=200px alt="Card image">
+                    <div class="card-body" style="text-align: center;">
+                        <h4 class="card-title">{{m.It_Name}}</h4>
+                        <p class="card-text">{{m.It_Size}}</p>
+                        <p class="card-text">
+                            {{m.F_Rate}} <span class="fa fa-star checked"></span>
+                        </p>
+                        <a href="OrderPage/{{m.id}}"  class="btn btn-primary">Order</a>
+                        {% comment %} <a href="#" class="btn btn-primary">Order</a> {% endcomment %}
                     </div>
                 </div>
             {% endfor %}
         </div> 
     </div>
+    
+
+
+
+
+
 
 
 

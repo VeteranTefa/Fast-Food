@@ -17,14 +17,35 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static 
-from fastfoodapp.views import mainpage,typepage,restaurant_Reg,restaurant,addmeal,delete,afterReg,login,customer_reg,Rdessert,curentuser,User,Rmeal,Outer_SearchBox,SearchBox,OrderPage,Aboutus,loginRestuarnt,loginType,newUser,index,RestaurantsPage,ordertype,checktype,editmeal,yourorders,showorders,editinfo,forgetpass,changepass
+from fastfoodapp.views import mainpage,typepage,restaurant_Reg,restaurant,addmeal,delete,afterReg,login,customer_reg,Rdessert,curentuser,User,Rmeal,Outer_SearchBox,OrderPage,Aboutus,loginRestuarnt,loginType,newUser,index,RestaurantsPage,ordertype,checktype,editmeal,yourorders,showorders,editinfo,forgetpass,changepass,testview
 
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+
+    # -----------------------------------
     path('',mainpage,name="MainPage"),
+    path('Foods/',Rmeal ,name="Rmeals"),
+    path('OrderPage/<int:id>',OrderPage ,name="OrderPage"),
+    path('Foods/OrderPage/<int:id>',OrderPage ,name="OrderPage"),
+    path('checktype',checktype,name="checktype"),
+    path('Restaurants/',Rdessert ,name="RDFPage"),
+    path('ordertype',ordertype,name="ordertype"),
+
+    path('Outer_SearchBox/',Outer_SearchBox ,name="search"),
+    # path('SearchBox/',SearchBox ,name="SearchBox"),
+
+    path('RestaurantsPage/<int:id>',RestaurantsPage ,name="RestaurantsPage"),
+    path('index/<int:id>',index,name="index"),
+    path('testview',testview,name="testview"),
+
+
+
+
+    # -----------------------------------
     path('typepage/',typepage,name="TypePage"),
     path('restaurantreg',restaurant_Reg,name="RegRestaurant"),
     path('restaurant',restaurant,name="Restaurant"),
@@ -40,21 +61,11 @@ urlpatterns = [
     path('customer/',customer_reg ,name="customer"),
     path('User/',User ,name="user"),
     path('User1/',curentuser,name="user1"),
-    path('RDFPage/',Rdessert ,name="RDFPage"),
-    path('Rmeals/',Rmeal ,name="Rmeals"),
-    path('Outer_SearchBox/',Outer_SearchBox ,name="search"),
-    path('SearchBox/',SearchBox ,name="SearchBox"),
-    path('OrderPage/<int:id>',OrderPage ,name="OrderPage"),
     path('loginforrestuarnt/',loginRestuarnt ,name="login2"),
     path('loginType/',loginType ,name="loginType"),
     path('newuser/',newUser ,name="newuser"),
-    path('index/<int:id>',index,name="index"),
-    path('RestaurantsPage/<int:id>',RestaurantsPage ,name="RestaurantsPage"),
-    path('ordertype',ordertype,name="ordertype"),
-    path('checktype',checktype,name="checktype"),
      path('pass/',forgetpass,name="password"),
       path('change/',changepass,name="changepassword"),
-    # path('home',OrderPage,name="home"),
 
 
 

@@ -4,7 +4,10 @@ import re
 from django.contrib import messages
 from django.urls import path
 from django.views.decorators.csrf import csrf_exempt
-from .models import Restaurant,FoodItem,testModel,Customer
+from .models import Restaurant,FoodItem,Customer
+# from .models import shop,meal
+
+
 
 
 # Create your views here.
@@ -17,7 +20,11 @@ def mainpage(request):
     Restobject = Restaurant.objects.all()
     Foods = FoodItem.objects.all()
     
-    return render(request,'Mubarak html files/mainPage.html',{'Restobject': Restobject[0:3], 'Foods': Foods[0:3]})
+    return render(request,'Mubarak html files/mainPage.html',{
+        'Restobject': Restobject[0:3],
+         'Foods': Foods[0:3],
+         }
+         )
 
 
 
@@ -29,36 +36,56 @@ def Rdessert(request):
     # for d in dessert:
     #     print("hello")
     #     print(d)
-    return render(request,'Mubarak html files/RDFPage.html',{'dessert' : dessert})
+    return render(request,'Mubarak html files/Restaurnts.html',{
+        'dessert' : dessert
+        })
 
 
 
 def Rmeal(request):
     meals = FoodItem.objects.all()
-    print(meals)
-    return render(request, 'Mubarak html files/RMFPage.html', {'meals':meals})
+    # print(meals)
+    return render(request, 'Mubarak html files/Foods.html', {
+        'meals':meals,
+        })
 
 
 
         # Search Fuchtion 
-def SearchBox(request):
-    print("hi")
-    if request.method == "GET":
-        searched = request.GET.get('searched')
-        FList = FoodItem.objects.all().filter(It_Name__iexact=searched)
-        print(FList)
-        return render(request, 'Mubarak html files/test.html', {'searched':searched, 'FList' : FList})
-    else:
-        return render(request, 'Mubarak html files/test.html', {})
+# def SearchBox(request):
+#     print("hi")
+#     if request.method == "GET":
+#         searched = request.GET.get('searched')
+#         FList = FoodItem.objects.all().filter(It_Name__iexact=searched)
+#         Flist_Two = FoodItem.objects.all().filter(It_Name__startwith=searched[0])
+#         print(searched)
+#         return render(request, 'Mubarak html files/test.html', {
+#             'searched':searched,
+#              'FList' : FList,
+#              'Flist_two': Flist_Two,
+#             })
+#     else:
+#         return render(request, 'Mubarak html files/test.html', {})
 
 
 @csrf_exempt
 def Outer_SearchBox(request):
     if request.method == "POST":
         outer_search = request.POST.get('searched')
+
+        Rlist = Restaurant.objects.all().filter(R_Name__iexact=outer_search)
+        Rlist_two = Restaurant.objects.all().filter(R_Name__istartswith=outer_search[0])
+
         Flist_two= FoodItem.objects.all().filter(It_Name__iexact=outer_search)
-        # print(Flist_two)
-        return render(request, 'Mubarak html files/test.html', {'outer_search': outer_search, 'Flist_two':Flist_two})
+        Flist_Three = FoodItem.objects.all().filter(It_Name__istartswith=outer_search[0])
+        print(Flist_Three)
+        return render(request, 'Mubarak html files/test.html', {
+            'outer_search': outer_search,
+            'Flist_two':Flist_two,
+            'Flist_Three' : Flist_Three ,
+            'Rlist'       : Rlist,
+            'Rlist_two'   : Rlist_two, 
+            })
     else:
         return render(request, 'Mubarak html files/test.html', {})
 
@@ -111,15 +138,14 @@ def checktype(request):
 
         except models.Customer.DoesNotExist:
             return render(request, 'Mubarak html files/checkResult.html', {
-                'wrongEmail': 'Wrong Email',
-                'wrongPassword' : 'Wrong password', 
+                'WrongINput': 'Wrong INput',
             })  
 
 
 
 def RestaurantsPage(request, id ):
     Restaurants = Restaurant.objects.get(id=id)
-    return render(request, 'Mubarak html files/ShowRestaurants.html', {
+    return render(request, 'restaurant.html', {
         'restaurant':Restaurants,
         'R_Image'   : Restaurants.R_Image,
         'R_Name'    : Restaurants.R_Name,
@@ -129,6 +155,30 @@ def RestaurantsPage(request, id ):
         'R_Rate'    : Restaurants.R_Rate,
         'R_City'    : Restaurants.R_City,
         'R_Area'    : Restaurants.R_Area,
+        'RImage_Cover': Restaurants.RImage_Cover
+    })
+
+def testview(request):
+    # meal = meal.objects.all()
+    rest = shop.objects.all()
+    A1 = meal(Mname="mansour", Mkind="fastfood")
+    A1.save()
+    B1 = shop(Sname="B1", Scity="lxour", provide=A1)
+    # B1.provide
+    print(meal)
+    print("------------------") 
+    print(rest)
+    print('----------------------')
+    print(A1)
+    print('-----------------------')
+    print(B1)
+    return render(request, 'Mubarak html files/objecttes.html', {
+        'meal': meal,
+        'rest': rest,
+        'B1'  : B1.provide.Mname,
+        'B2'      :  B1.provide.Mkind,
+
+
     })
 
 

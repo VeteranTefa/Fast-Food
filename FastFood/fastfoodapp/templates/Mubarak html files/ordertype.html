@@ -73,15 +73,14 @@
         <div class="menu-icon"><span class="fas fa-bars"></span></div>
         <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none;">Otlob</a>
         <div class="nav-items">
-            <li><a href="{% url 'aboutus'%}">About Us</a></li>
-            <li><a href="#">Foods</a></li>
-            <li><a href="{% url 'Restaurant' %}">Restaurant</a></li>
-            <li><a href="#">Feedback</a></li>
-            <li><a href="{% url 'loginType' %}">Sign In</a></li>
-            <li><a href="{% url 'TypePage' %}">Sign Up</a></li>
-    
+            <li style="margin-left: 80px;"><a href="{% url 'aboutus'%}">About Us</a></li>
+            <li style="margin-left: 80px;"><a href="{% url 'Rmeals'%}">Foods</a></li>
+            <li style="margin-left: 80px;"><a href="{% url 'RDFPage' %}">Reastaurants</a></li>
+            <li style="margin-left: 80px;"><a href="{% url 'loginType' %}">Sign In</a></li>
+            <li style="margin-left: 80px;"><a href="{% url 'TypePage' %}">Sign Up</a></li>
         </div>
-      
+        <!-- <div class="search-icon"><span class="fas fa-search"></span></div>
+        <div class="cancel-icon"><span class="fas fa-times"></span></div> -->
     </nav>
   
 <script>
@@ -122,10 +121,10 @@
             <input type="submit" value="Check">
         </form>
     </div> -->
-    <div class="container">
+    <div class="container" style="height: 40em;">
       <section>
 
-        <form method="GET" action="{% url 'checktype' %}">
+        <form method="GET" action="{% url 'checktype' %}" style="height:256px;">
           {% csrf_token %}
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>

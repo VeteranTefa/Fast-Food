@@ -1,6 +1,7 @@
-{% load static %}
+{% comment %} {% load static %} {% endcomment %}
 <!DOCTYPE html>
 <!-- Created By CodingNepal -->
+{% load static %}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -35,7 +36,7 @@
     }
     {% comment %} Card style {% endcomment %}
     #Restaurants-Section , #HomeMade-Section{
-      display: flex;
+      {% comment %} display: flex; {% endcomment %}
     }
     #sec-header{
       width: 100%;
@@ -68,13 +69,11 @@
         <div class="menu-icon"><span class="fas fa-bars"></span></div>
         <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none;">Otlob</a>
         <div class="nav-items">
-            <li><a href="{% url 'aboutus'%}">About Us</a></li>
-            <li><a href="{% url 'Rmeals'%}">Foods</a></li>
-            <li><a href="{% url 'RDFPage' %}">Reastaurants</a></li>
-            <li><a href="{% url 'loginType' %}">Sign In</a></li>
-            <li><a href="{% url 'TypePage' %}">Sign Up</a></li>
-            
-      
+            <li style="margin-left: 80px;"><a href="{% url 'aboutus'%}">About Us</a></li>
+            <li style="margin-left: 80px;"><a href="{% url 'Rmeals'%}">Foods</a></li>
+            <li style="margin-left: 80px;"><a href="{% url 'RDFPage' %}">Reastaurants</a></li>
+            <li style="margin-left: 80px;"><a href="{% url 'loginType' %}">Sign In</a></li>
+            <li style="margin-left: 80px;"><a href="{% url 'TypePage' %}">Sign Up</a></li>
         </div>
         <!-- <div class="search-icon"><span class="fas fa-search"></span></div>
         <div class="cancel-icon"><span class="fas fa-times"></span></div> -->
@@ -177,7 +176,7 @@
           <h4>Foods<h4>
       </div>
 
-      <div class="container-fluid" id="Restaurants-Section" >
+      {% comment %} <div class="container-fluid" id="Restaurants-Section" >
         <div class="row" style=" margin-left: 3%;">
           {% for F in Foods %}
             <div class="card" style="width:250px;">
@@ -185,46 +184,42 @@
                     <img class="card-img-top" src="{{F.F_Images.url}}" style="height:200px; height:200px;" alt="card image">
                 </div>
                 <div class="card-body">
-                    <h6 class="card-title">Name :{{F.It_Name}}</h6>
-                    <h6 class="card-title">Type :{{F.It_Kind}}</h6>
-                    <h6 class="card-title">
+                    <h6 class="card-title" style="text-align:center;font-size:1.5em;">{{F.It_Name}}</h6>
+                    <h6 class="card-title" style="text-align:center;font-size:1.5em;">{{F.It_Kind}}</h6>
+                    <h6 class="card-title" style="text-align:center;font-size:1.5em;">
                       Rate : {{F.F_Rate}} <span class="fa fa-star checked"></span>
                     </h6>
                 </div>
-                <div>
+                <div style="text-align:center;"> 
                       <a class="btn btn-primary" href="/OrderPage/{{F.id}}">see more </a>
                 </div>
             </div>
           {% endfor %}
         </div>
-        
+      </div> {% endcomment %}
 
-        {% comment %} <div>
-            <button class="btn btn-primary"> select</button>
-            <hr>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                Checked
-                </label>
-            </div>
+    <div  class="container" id="Food-cards" style="margin-top:10px; text-align: center;">
+        <div class="row" style="margin-left: 0.5%;">
+            {% for F in Foods %}
+                <div class="card" style="width:300px; margin-left: 2%; margin-top: 2%;">
+                    <img class="card-img-top" src="{{F.F_Images.url}}" height=200px width=200px alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title">{{F.It_Name}}</h4>
+                        <p class="card-text">{{F.It_Kind}}</p>
+                        <p class="card-text">
+                          {{F.F_Rate}}<span class="fa fa-star checked"></span>
+                        </P>
+                        <a href="OrderPage/{{F.id}}"  class="btn btn-primary">See Description</a>
+                        {% comment %} <a href="/OrderPage/{{F.id}}" class="btn btn-primary">Order</a> {% endcomment %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div> 
+    </div>
 
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-              <label class="form-check-label" for="flexCheckChecked">
-                Checked
-                </label>
-            </div>
 
-                        <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-              <label class="form-check-label" for="flexCheckChecked">
-                Checked
-                </label>
-            </div>
-        </div> {% endcomment %}
 
-      </div>
+
 
 
 
@@ -236,54 +231,31 @@
           <h4>Restaurants<h4>
       </div>
 
-      <div class="container-fluid" id="Restaurants-Section" > 
-        <div class="row" style=" margin-left: 3%;" >
+      <div class="container" id="Restaurants-Section" style="margin-top:10px; text-align: center;"> 
+        <div class="row" style=" margin-left: 0.5%;" >
           {% for R in Restobject %}
-            <div class="card" style="width:250px;">
-                <div class="card-header">
-                    <img class="card-img-top" src="{{R.R_Image.url}}" style="height:200px; height:200px;" alt="card image">
-                </div>
+            <div class="card" style="width:300px; margin-left: 2%;">
+                    <img class="card-img-top" src="{{R.R_Image.url}}" height=200px height=200px alt="card image">
                 <div class="card-body">
-                    <h6 class="card-title">Name :{{R.R_Name}}</h6>
-                    <h6 class="card-title">Type :{{R.R_Type}}</h6>
-                    <h6 class="card-title">
+                    <h6 class="card-title" style="text-align:center; font-size:1.5em">{{R.R_Name}}</h6>
+                    <h6 class="card-title" style="text-align:center; font-size:1.5em">{{R.R_Type}}</h6>
+                    <h6 class="card-title" style="text-align:center; font-size:1.5em">
                       Rate : {{R.R_Rate}} <span class="fa fa-star checked"></span>
                     </h6>
-                </div>
-                <div class="card-footer">
+                </div >
+                <div class="card-footer" style="text-align:center; font-size:1.5em">
                     <a class="btn btn-primary" href="/RestaurantsPage/{{R.id}}">Visit</a>
                 </div>
             </div>
           {% endfor %}
         </div>
         
-
-        {% comment %} <div>
-            <button class="btn btn-primary"> select</button>
-            <hr>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                Checked
-                </label>
-            </div>
-
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-              <label class="form-check-label" for="flexCheckChecked">
-                Checked
-                </label>
-            </div>
-
-                        <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-              <label class="form-check-label" for="flexCheckChecked">
-                Checked
-                </label>
-            </div>
-        </div> {% endcomment %}
-
       </div>
+
+
+
+
+
 
 
 
