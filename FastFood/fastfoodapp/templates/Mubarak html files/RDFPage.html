@@ -13,6 +13,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <style>
+       .card:hover{
+    box-shadow: 0 50px 50px 0 rgba(248, 101, 3, 0.959), 0 50px 50px 0 rgba(250, 124, 6, 0.918);
+    transform: skew(20deg); 
+          transition: all 3s;
+  }
         footer {
             background: #3a3a3a;
             color: #fff;
@@ -34,21 +39,19 @@
 
     <nav>
           <div class="menu-icon"><span class="fas fa-bars"></span></div>
-          <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none;">Otlob</a>
+          <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none; color: #E08A1A;;">Otlob</a>
           <div class="nav-items">
            <li><a href="{% url 'aboutus'%}">About Us</a></li>
             <li><a href="{% url 'Rmeals'%}">Foods</a></li>
-            <li><a href="{% url 'RDFPage' %}">Reastaurants</a></li>
-            <li><a href="{% url 'loginType' %}">log In</a></li>
-            <li><a href="{% url 'TypePage' %}">log Up</a></li>
-          </div>
-          <div class="search-icon"><span class="fas fa-search"></span></div>
-          <div class="cancel-icon"><span class="fas fa-times"></span></div>
-             <form action="{% url 'search' %}" method="POST">{% csrf_token %}
-                {% comment %} {% csrf_token %} {% endcomment %}
-                <input type="search" class="search-data" placeholder="Search for Foods-Restaurants " name="searched" >
-                <button type="submit" class="fas fa-search"></button>
-          </form>
+            <li><a href="{% url 'Restaurant' %}">Reastaurant</a></li>
+            <li><a href="{% url 'loginType' %}">SING.In</a></li>
+            <li><a href="{% url 'TypePage' %}">SINGUp</a></li>
+            <div class="cancel-icon">
+                <span class="fas fa-times"></span></div>
+                <form action="#" style="margin-left: 800px;">
+                        <input type="search" class="search-data" placeholder="Search" required>
+                        <button type="submit" class="fas fa-search"></button>
+                      </form></div> 
     </nav>
 
 
@@ -88,10 +91,10 @@
 
 
 
-    <div  class="container" id="Food-cards">
+    <div  class="container" id="Food-cards" style="background-color:#E08A1A;text-align: center;">
         <div class="row" style="margin-left: 40px;">
             {% for r in dessert %}
-                <div class="card" style="width:300px ; margin-left: 50px;">
+                <div class="card" style="width:300px ; margin: 10px;">
                     <img class="card-img-top" src="{{r.R_Image.url}}" height=200px width=200px alt="Card image">
                     <div class="card-body">
                         <h4 class="card-title">{{r.R_Name}}</h4>
