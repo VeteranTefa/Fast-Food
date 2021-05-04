@@ -5,7 +5,8 @@ from django.contrib import messages
 from django.urls import path
 from django.views.decorators.csrf import csrf_exempt
 from .models import Restaurant,FoodItem,Customer
-# from .models import shop,meal
+from .models import vindour,food
+
 
 
 
@@ -145,7 +146,7 @@ def checktype(request):
 
 def RestaurantsPage(request, id ):
     Restaurants = Restaurant.objects.get(id=id)
-    return render(request, 'restaurant.html', {
+    return render(request, 'Mubarak html files/ManyToMany/restaurant.html', {
         'restaurant':Restaurants,
         'R_Image'   : Restaurants.R_Image,
         'R_Name'    : Restaurants.R_Name,
@@ -158,28 +159,29 @@ def RestaurantsPage(request, id ):
         'RImage_Cover': Restaurants.RImage_Cover
     })
 
-def testview(request):
-    # meal = meal.objects.all()
-    rest = shop.objects.all()
-    A1 = meal(Mname="mansour", Mkind="fastfood")
-    A1.save()
-    B1 = shop(Sname="B1", Scity="lxour", provide=A1)
-    # B1.provide
-    print(meal)
-    print("------------------") 
-    print(rest)
-    print('----------------------')
-    print(A1)
-    print('-----------------------')
-    print(B1)
-    return render(request, 'Mubarak html files/objecttes.html', {
-        'meal': meal,
-        'rest': rest,
-        'B1'  : B1.provide.Mname,
-        'B2'      :  B1.provide.Mkind,
 
 
+
+
+def testview(request, id):
+    restid = Restaurant.objects.get(id=id)
+    # foods = FoodItem.objects.all().get(It_Name='F1')
+    if request.method == "POST":
+        fname = request.POST['name']
+
+        cobj = FoodItem.objects.create(
+            It_Name= fname,
+        )
+        cobj.save()
+        cobj.foods.add(restid)
+        A = FoodItem.objects.all().filter(foods__id=id)
+    # print(foods)
+    print(A)
+    return render(request, 'Mubarak html files/ManyToMany/restaurant.html', {
+        # 'foods' : foods,
+        'A'     : A
     })
+
 
 
 

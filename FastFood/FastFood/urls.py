@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static 
 from fastfoodapp.views import mainpage,typepage,restaurant_Reg,restaurant,addmeal,delete,afterReg,login,customer_reg,Rdessert,curentuser,User,Rmeal,Outer_SearchBox,OrderPage,Aboutus,loginRestuarnt,loginType,newUser,index,RestaurantsPage,ordertype,checktype,editmeal,yourorders,showorders,editinfo,forgetpass,changepass,testview
-
+from fastfoodapp.views import RestaurantsPage
 
 
 
@@ -40,7 +40,8 @@ urlpatterns = [
 
     path('RestaurantsPage/<int:id>',RestaurantsPage ,name="RestaurantsPage"),
     path('index/<int:id>',index,name="index"),
-    path('testview',testview,name="testview"),
+    path('testview/<int:id>',testview,name="testview"),
+    path('RestaurantsPage', testview, name='RestaurantsPage'),
 
 
 

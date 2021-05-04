@@ -1,5 +1,9 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator 
+# from django.utils.encoding import python_2_unicode_compatible
+from django.utils.translation import ugettext_lazy as _
+# from __future__ import unicode_literals
+
 
 # Create your models here.
 
@@ -37,6 +41,7 @@ class FoodItem(models.Model):
     It_Descrip = models.CharField(max_length=200, default='null')
     F_Images= models.ImageField(upload_to='media/images', default='media/images/null.png')
     F_Rate = models.PositiveIntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    foods = models.ManyToManyField(Restaurant)
 
 
 
@@ -119,33 +124,14 @@ class Receive(models.Model):
 
 
 
-# class meal(models.Model):
-#     Mname = models.CharField(max_length=200)
-#     Mkind = models.CharField(max_length=200)
-#     shops = models.ManyToManyField('shop', through='khod')
-#     # Mprice = models.intgerField()
-#     def __str__(self):
-#         return self.Mname
-    
+class food(models.Model):
+    name = models.CharField(max_length=50)
 
 
-# class shop(models.Model):
-#     Sname = models.CharField(max_length=200)
-#     Scity = models.CharField(max_length=200)
-#     # provide = models.ForeignKey(meal, on_delete=models.CASCADE)
-#     meals = models.ManyToManyField('meal', through='khod')
+class vindour(models.Model):
+    Vname = models.CharField(max_length=50)
+    kind  = models.CharField(max_length=50)
+    foods = models.ManyToManyField(food)
 
-#     def __str__(self):
-#         return self.Sname
-    
-
-
-# class khod(models.Model):
-#     meal= models.ForeignKey(meal, on_delete=models.CASCADE)
-#     shop= models.ForeignKey(shop, on_delete=models.CASCADE)
-
-
-#     def __str__(self):
-#         return self.meal
     
 

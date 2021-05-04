@@ -84,7 +84,7 @@
 
                             {% comment %} searchBox functions  / or  get method {% endcomment %}
         {% if outer_search %}
-        <h5 style="text-align: center;"> you searched FOR " {{outer_search}} " Did you mean This Result</h5>
+        <h5 style="text-align: center;">  you searched FOR " {{outer_search}} " Did you mean This Result " Restaurants "</h5>
         <hr>
         {% if Rlist %}
             <div class="container" style="display:flex;">
@@ -127,9 +127,9 @@
                     {% endfor %}
                 </div>
             {% else %}
-                <div class="container" style="height:30em; padding: 80px; text-align: center;">
+                {% comment %} <div class="container" style="height:30em; padding: 80px; text-align: center;">
                     <div style="font-size: 2em"> Invalid Item </div>
-                </div> 
+                </div>  {% endcomment %}
             {% endif %}
         {% endif %}
     {% else %}
@@ -146,7 +146,7 @@
 
                     {% comment %} outer function / or Post method {% endcomment %}
     {% if outer_search %}
-        <h5 style="text-align: center;"> you searched FOR " {{outer_search}} " Did you mean This Result</h5>
+        <h5 style="text-align: center;">  you searched FOR " {{outer_search}} " Did you mean This Result " Foods "</h5>
         <hr>
         {% if Flist_two %}
             <div class="container" style="display:flex;">
