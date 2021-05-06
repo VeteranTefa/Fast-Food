@@ -30,28 +30,28 @@ body{
 </head>
 <body>
     
-        <header>
-            <nav>
-                <div class="menu-icon">
-          <span class="fas fa-bars"></span></div>
-          <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none;">Otlob</a>
-          <div class="nav-items">
-           <li><a href="{% url 'aboutus'%}">About Us</a></li>
-            <li><a href="{% url 'Rmeals'%}">Foods</a></li>
-            <li><a href="{% url 'RDFPage' %}">Reastaurants</a></li>
-            <li><a href="{% url 'loginType' %}">log In</a></li>
-            <li><a href="{% url 'TypePage' %}">log Up</a></li>
-          </div>
-          <div class="search-icon">
-          <span class="fas fa-search"></span></div>
-          <div class="cancel-icon">
-          <span class="fas fa-times"></span></div>
-          <form action="#">
-                  <input type="search" class="search-data" placeholder="Search" required>
-                  <button type="submit" class="fas fa-search"></button>
-                </form>
-          </nav>
-        </header>
+<!--        <header>-->
+<!--            <nav>-->
+<!--                <div class="menu-icon">-->
+<!--          <span class="fas fa-bars"></span></div>-->
+<!--          <a href="{% url 'MainPage' %}" class="logo" style="text-decoration: none;">Fast Food</a>-->
+<!--          <div class="nav-items">-->
+<!--           <li><a href="{% url 'aboutus'%}">About Us</a></li>-->
+<!--            <li><a href="{% url 'Rmeals'%}">Foods</a></li>-->
+<!--            <li><a href="{% url 'RDFPage' %}">Reastaurants</a></li>-->
+<!--            <li><a href="{% url 'loginType' %}">log In</a></li>-->
+<!--            <li><a href="{% url 'TypePage' %}">Sign Up</a></li>-->
+<!--          </div>-->
+<!--          <div class="search-icon">-->
+<!--          <span class="fas fa-search"></span></div>-->
+<!--          <div class="cancel-icon">-->
+<!--          <span class="fas fa-times"></span></div>-->
+<!--          <form action="#">-->
+<!--                  <input type="search" class="search-data" placeholder="Search" required>-->
+<!--                  <button type="submit" class="fas fa-search"></button>-->
+<!--                </form>-->
+<!--          </nav>-->
+<!--        </header>-->
         <div class="container">
         <div class="row">
             <div class="col-12">
@@ -59,10 +59,10 @@ body{
                     <h3>Choose Your Type </h3>
                     <div class="row">
                         <aside class="col-6">
-                            <a href="{% url 'customer' %}" class="btn btn-danger"><i class="fas fa-user"></i> | Customer</a>
+                            <a href="{% url 'regforcustomer' %}" class="btn btn-danger"><i class="fas fa-user"></i> | Customer</a>
                         </aside>
                         <aside class="col-6">
-                            <a href="{% url 'RegRestaurant' %}" class="btn btn-danger"><i class="fas fa-utensils"></i> | Restaurant</a>
+                            <a href="{% url 'resturantregister' %}" class="btn btn-danger"><i class="fas fa-utensils"></i> | Restaurant</a>
     
                         </aside>
                     </div>

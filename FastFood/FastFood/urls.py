@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static 
-from fastfoodapp.views import mainpage,typepage,restaurant_Reg,restaurant,addmeal,delete,afterReg,login,customer_reg,Rdessert,curentuser,User,Rmeal,Outer_SearchBox,SearchBox,OrderPage,Aboutus,loginRestuarnt,loginType,newUser,index,RestaurantsPage,ordertype,checktype,editmeal,yourorders,showorders,editinfo
+from fastfoodapp.views import mainpage,typepage,restaurant_Reg,restaurant,addmeal,delete,afterReg,login,Rdessert,curentuser,User,Rmeal,Outer_SearchBox,SearchBox,OrderPage,Aboutus,loginRestuarnt,loginType,newUser,index,RestaurantsPage,ordertype,checktype,editmeal,yourorders,showorders,editinfo,registerForCustomer,loginForCustomer,logout_user,registerForResturant,loginForResturant
 
 
 
@@ -37,7 +37,7 @@ urlpatterns = [
     path('congratulations',afterReg,name="congratulations"),
     path('login/',login,name="login"),
     path('about/',Aboutus,name="aboutus"),
-    path('customer/',customer_reg ,name="customer"),
+    # path('customer/',customer_reg ,name="customer"),
     path('User/',User ,name="user"),
     path('User1/',curentuser,name="user1"),
     path('RDFPage/',Rdessert ,name="RDFPage"),
@@ -52,7 +52,13 @@ urlpatterns = [
     path('RestaurantsPage/<int:id>',RestaurantsPage ,name="RestaurantsPage"),
     path('ordertype',ordertype,name="ordertype"),
     path('checktype',checktype,name="checktype"),
-    # path('home',OrderPage,name="home"),
+    path('customerregister/',registerForCustomer , name="regforcustomer"),
+    path('logincustomer/',loginForCustomer,name="logincustomer"),
+    path('logoutuser/', logout_user, name="logoutuser"),
+    path('resturantregister/', registerForResturant, name="resturantregister"),
+    path('loginresturant/', loginForResturant, name="loginresturant"),
+
+                  # path('home',OrderPage,name="home"),
 
 
 

@@ -13,7 +13,7 @@ class Restaurant(models.Model):
     R_Password=models.CharField(max_length=200)
     R_City=models.CharField(max_length=200)
     R_Area=models.CharField(max_length=200,default="Qena")
-    R_Image = models.ImageField(upload_to='media/images', default="null")
+    R_Image = models.ImageField(default='null.png',upload_to='media/images')
     R_Rate= models.PositiveIntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(5)])
 
 
