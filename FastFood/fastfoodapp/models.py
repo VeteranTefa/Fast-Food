@@ -52,9 +52,9 @@ class FoodItem(models.Model):
 
 
 
-class Add(models.Model): 
-    R_id = models.ForeignKey(Restaurant(), default=1 ,on_delete= models.SET_DEFAULT)
-    F_id=models.ForeignKey(FoodItem(),default=1,on_delete=models.SET_DEFAULT)
+# class Add(models.Model): 
+#     R_id = models.ForeignKey(Restaurant(), default=1 ,on_delete= models.SET_DEFAULT)
+#     F_id=models.ForeignKey(FoodItem(),default=1,on_delete=models.SET_DEFAULT)
     
 
 
@@ -63,19 +63,15 @@ class Add(models.Model):
 
 
 
-class DeliveryInfo(models.Model):
-    D_Name = models.CharField(max_length=200)
-    D_time = models.DateTimeField()
-    D_totalCost = models.FloatField()
 
 
 
 
 
 
-class has(models.Model):
-    Food_it_id = models.ForeignKey(FoodItem(),default=1 ,on_delete=models.SET_DEFAULT)
-    Delivery_id= models.ForeignKey(DeliveryInfo(), default=1, on_delete=models.SET_DEFAULT)
+# class has(models.Model):
+#     Food_it_id = models.ForeignKey(FoodItem(),default=1 ,on_delete=models.SET_DEFAULT)
+#     Delivery_id= models.ForeignKey(DeliveryInfo(), default=1, on_delete=models.SET_DEFAULT)
     
 
 
@@ -100,23 +96,34 @@ class Customer(models.Model):
 
 
 
-    
-
 
 
 
 class Order(models.Model):
-    Customer_id = models.ForeignKey(Customer(),default=1,on_delete=models.SET_DEFAULT)
-    Food_it_id = models.ForeignKey(FoodItem(),default=1,on_delete=models.SET_DEFAULT)
+    D_Name = models.CharField(max_length=200, default='null')
+    D_time = models.DateTimeField(auto_now=True)
+    D_totalCost = models.DecimalField(max_digits=5, decimal_places=2, default=000)
+    restaurants = models.ManyToManyField(Restaurant)
+    customers   = models.ManyToManyField(Customer)
+    foods       = models.ManyToManyField(FoodItem)
+    
+
+    
+
+
+
+# class Order(models.Model):
+#     Customer_id = models.ForeignKey(Customer(),default=1,on_delete=models.SET_DEFAULT)
+#     Food_it_id = models.ForeignKey(FoodItem(),default=1,on_delete=models.SET_DEFAULT)
     
 
 
 
 
 
-class Receive(models.Model):
-    Customer_id = models.ForeignKey(Customer(), default=1,on_delete=models.SET_DEFAULT)
-    Delivery_id = models.ForeignKey(DeliveryInfo(), default=1, on_delete=models.SET_DEFAULT)
+# class Receive(models.Model):
+    # Customer_id = models.ForeignKey(Customer(), default=1,on_delete=models.SET_DEFAULT)
+    # Delivery_id = models.ForeignKey(DeliveryInfo(), default=1, on_delete=models.SET_DEFAULT)
 
 
 
@@ -124,14 +131,14 @@ class Receive(models.Model):
 
 
 
-class food(models.Model):
-    name = models.CharField(max_length=50)
+# class food(models.Model):
+#     name = models.CharField(max_length=50)
 
 
-class vindour(models.Model):
-    Vname = models.CharField(max_length=50)
-    kind  = models.CharField(max_length=50)
-    foods = models.ManyToManyField(food)
+# class vindour(models.Model):
+#     Vname = models.CharField(max_length=50)
+#     kind  = models.CharField(max_length=50)
+#     foods = models.ManyToManyField(food)
 
     
 

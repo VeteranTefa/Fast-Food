@@ -17,9 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static 
-from fastfoodapp.views import mainpage,typepage,restaurant_Reg,restaurant,addmeal,delete,afterReg,login,customer_reg,Rdessert,curentuser,User,Rmeal,Outer_SearchBox,OrderPage,Aboutus,loginRestuarnt,loginType,newUser,index,RestaurantsPage,ordertype,checktype,editmeal,yourorders,showorders,editinfo,forgetpass,changepass,testview
-from fastfoodapp.views import RestaurantsPage
-
+from fastfoodapp.views import typepage,restaurant_Reg,restaurant,addmeal,delete,afterReg,login,customer_reg,curentuser,User,Aboutus,loginRestuarnt,loginType,newUser,editmeal,yourorders,showorders,editinfo,forgetpass,changepass
+from fastfoodapp.views import mainpage,RestaurantsPage,Rmeal,Outer_SearchBox,Rdessert,OrderPage,index,RestaurantsPage,ordertype,checktype,testview
+from fastfoodapp.views import history_of_orders,restaurant_meals
 
 
 urlpatterns = [
@@ -28,6 +28,11 @@ urlpatterns = [
 
     # -----------------------------------
     path('',mainpage,name="MainPage"),
+    path('restaurant/<int:id>', restaurant_meals, name='restaurant'),
+
+
+
+
     path('Foods/',Rmeal ,name="Rmeals"),
     path('OrderPage/<int:id>',OrderPage ,name="OrderPage"),
     path('Foods/OrderPage/<int:id>',OrderPage ,name="OrderPage"),
@@ -42,12 +47,13 @@ urlpatterns = [
     path('index/<int:id>',index,name="index"),
     path('testview/<int:id>',testview,name="testview"),
     path('RestaurantsPage', testview, name='RestaurantsPage'),
+    path('orderhistory/<int:id>',history_of_orders, name='orderHistory'),
+    path('typepage/',typepage,name="TypePage"),
 
 
 
 
     # -----------------------------------
-    path('typepage/',typepage,name="TypePage"),
     path('restaurantreg',restaurant_Reg,name="RegRestaurant"),
     path('restaurant',restaurant,name="Restaurant"),
     path('restaurant/<int:id>',delete,name="Restaurant"),

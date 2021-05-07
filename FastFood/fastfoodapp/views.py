@@ -4,8 +4,8 @@ import re
 from django.contrib import messages
 from django.urls import path
 from django.views.decorators.csrf import csrf_exempt
-from .models import Restaurant,FoodItem,Customer
-from .models import vindour,food
+from .models import Restaurant,FoodItem,Customer,Order
+# from .models import vindour,food
 
 
 
@@ -17,6 +17,7 @@ from .models import vindour,food
 
         #       Mubarak Functions workplace        #
 
+    # Main page functions
 def mainpage(request):
     Restobject = Restaurant.objects.all()
     Foods = FoodItem.objects.all()
@@ -26,6 +27,198 @@ def mainpage(request):
          'Foods': Foods[0:3],
          }
          )
+
+    # Restaurant page functions 
+
+def restaurant_meals(request, id):
+        #  globale variables for if condtions
+    restaurant_meals = None
+    customers_orders = None
+    recive_orders    = None
+    food_item        = None
+        #  to show current Restaurant data
+    Restaurant_id = Restaurant.objects.get(id=id)
+    if Restaurant_id :
+            #  to show restaurant meals
+        restaurant_meals = FoodItem.objects.filter(foods__id=id)
+        # print(restaurant_meals)
+
+            # to show customers orders 
+        customers_orders = Order.objects.all().filter(restaurants__id =id)
+        print('customer orders variable -----')
+        print(customers_orders)
+        if customers_orders:
+            recive_orders = customers_orders
+            print('recive orders variabel ----')
+            print(recive_orders)
+        else:
+            recive_orders = 'thers is no orders for today'
+            # print(recive_orders)
+
+    else:
+            #  to add new meal 
+        if request.method == "POST":
+            meal_name = request.POST.get('name')
+            meal_kind = request.POST.get('Kind')
+            meal_size = request.POST.get('Size')
+            meal_prise= request.POST.get('Prise')
+            meal_Descr= request.POST.get('Description')
+            meal_rate = request.POST.get('Rate')
+            meal_image= request.POST.get('Image')
+
+            food_item = FoodItem(
+
+                It_Name   = meal_name,
+                It_Kind   = meal_kind,
+                It_Size   = meal_size,
+                It_Prise  = meal_prise,
+                It_Descrip= meal_Descr,
+                F_Rate    = meal_rate,
+                F_Images  = meal_image
+
+            )
+            food_item.save()
+            food_item.foods.add(Restaurant_id)
+            print('food item variable')
+            print(food_item)
+            
+        #     return render(request, 'Mubarak html files/ManyToMany/restaurant.html', {})
+        # else:
+        #     return render(request, 'Mubarak html files/ManyToMany/restaurant.html', {})
+    return render(request, 'Mubarak html files/ManyToMany/restaurant.html', {
+        #  to show current Restaurant data
+        'R_id'      : Restaurant_id.id,
+        'R_Image'   : Restaurant_id.R_Image,
+        'R_Name'    : Restaurant_id.R_Name,
+        'R_Type'    : Restaurant_id.R_Type,
+        'R_Email'   : Restaurant_id.R_Email,
+        'R_Phone'   : Restaurant_id.R_Phone,
+        'R_Rate'    : Restaurant_id.R_Rate,
+        'R_City'    : Restaurant_id.R_City,
+        'R_Area'    : Restaurant_id.R_Area,
+        'RImage_Cover': Restaurant_id.RImage_Cover,
+
+        #  to show restaurant meals
+        'restaurant_meals' : restaurant_meals,
+
+        #  to show today orders 
+        'recive_orders'     : recive_orders,
+
+        # to add new meal 
+
+    })
+    
+
+
+            
+#   function for restauratns --- this function do the exact thing like above and i did that to handle old version pages " Restaurant page "
+def RestaurantsPage(request, id ):
+        #  globale variables for if condtions
+    restaurant_meals = None
+    customers_orders = None
+    recive_orders    = None
+    food_item        = None
+
+        #  to show current Restaurant data
+    Restaurant_id = Restaurant.objects.get(id=id)
+        #  to show restaurant meals
+    restaurant_meals = FoodItem.objects.filter(foods__id=id)
+    # print(restaurant_meals)
+
+            # to show customers orders 
+    customers_orders = Order.objects.all().filter(restaurants__id =id)
+    print(customers_orders)
+    if customers_orders:
+        recive_orders = customers_orders
+        print(recive_orders)
+    else:
+        recive_orders = 'thers is no orders for today'
+        # print(recive_orders)
+
+
+        #  to add new meal 
+    if request.method == "POST":
+        meal_name = request.POST.get('name')
+        meal_kind = request.POST.get('Kind')
+        meal_size = request.POST.get('Size')
+        meal_prise= request.POST.get('Prise')
+        meal_Descr= request.POST.get('Description')
+        meal_rate = request.POST.get('Rate')
+        meal_image= request.POST.get('Image')
+
+        food_item = FoodItem(
+
+            It_Name   = meal_name,
+            It_Kind   = meal_kind,
+            It_Size   = meal_size,
+            It_Prise  = meal_prise,
+            It_Descrip= meal_Descr,
+            F_Rate    = meal_rate,
+            F_Images  = meal_image
+
+        )
+        food_item.save()
+        food_item.foods.add(Restaurant_id)
+        
+
+
+    return render(request, 'Mubarak html files/ManyToMany/restaurant.html', {
+        #  to show current Restaurant data
+        'R_id'      : Restaurant_id.id,
+        'R_Image'   : Restaurant_id.R_Image,
+        'R_Name'    : Restaurant_id.R_Name,
+        'R_Type'    : Restaurant_id.R_Type,
+        'R_Email'   : Restaurant_id.R_Email,
+        'R_Phone'   : Restaurant_id.R_Phone,
+        'R_Rate'    : Restaurant_id.R_Rate,
+        'R_City'    : Restaurant_id.R_City,
+        'R_Area'    : Restaurant_id.R_Area,
+        'RImage_Cover': Restaurant_id.RImage_Cover,
+
+                #  to shoe restaurant meals
+        'restaurant_meals' : restaurant_meals,
+
+                #  to show today orders 
+        'recive_orders'     : recive_orders
+
+    })
+
+
+
+
+                    # customers functions here 
+                
+
+        # to show previous orders
+def history_of_orders(request, id):
+        #  global variables for if condations 
+    customerinfo = None
+    history  = None
+    message  = None
+
+        #  get and check the user 
+    checkuesr = Customer.objects.get(id=id)
+    if checkuesr:
+        customerinfo = Customer.objects.get(id=id)
+        # print((customerinfo.C_Fname))
+        history= Order.objects.all().filter(customers__id=id)
+        message = 'ther is no orders'
+        if history:
+            print(history)
+        
+        else:
+            pass
+
+        if customerinfo:
+            pass
+    
+
+    return render(request, 'Mubarak html files/ManyToMany/customersOrders.html', {
+        'customerinfo': customerinfo,
+        'history' : history,
+        'message' : message
+    })
+
 
 
 
@@ -79,7 +272,7 @@ def Outer_SearchBox(request):
 
         Flist_two= FoodItem.objects.all().filter(It_Name__iexact=outer_search)
         Flist_Three = FoodItem.objects.all().filter(It_Name__istartswith=outer_search[0])
-        print(Flist_Three)
+        # print(Flist_Three)
         return render(request, 'Mubarak html files/test.html', {
             'outer_search': outer_search,
             'Flist_two':Flist_two,
@@ -94,7 +287,7 @@ def Outer_SearchBox(request):
 def index(request, id):
     # itemId = testModel.objects.all()
     tesItem= testModel.objects.get(Mid=id)
-    print(tesItem)
+    # print(tesItem)
     return render(request, 'Mubarak html files/base.html', {
         # 'item': item.It_Name,
         # 'itemId': itemId,
@@ -105,16 +298,40 @@ def index(request, id):
 
 def OrderPage(request, id):
     order = FoodItem.objects.get(id=id)
-    print(order)
-    return render(request, 'Mubarak html files/OrdersPage.html', {
-        'order': order,
-        'orderName': order.It_Name,
-        'orderKink': order.It_Kind,
-        'orderSize': order.It_Prise,
-        'orderDescription': order.It_Descrip,
-        'orderImages': order.F_Images,
-        'orderRate': order.F_Rate
-    })
+    if request.method == "POST":
+        # print(order)
+        orders = Order(
+            D_Name = order.It_Name,
+            D_totalCost = order.It_Prise,
+        )
+        orders.save()
+        # print(orders)
+        A = Customer.objects.all()
+        # print(A[0].id)
+        orders.customers.add(A[0].id)
+
+        return render(request, 'Mubarak html files/OrdersPage.html', {
+            'order': order,
+            'orderName': order.It_Name,
+            'orderKink': order.It_Kind,
+            'orderSize': order.It_Prise,
+            'orderDescription': order.It_Descrip,
+            'orderImages': order.F_Images,
+            'orderRate': order.F_Rate
+        })
+    else:
+        return render(request, 'Mubarak html files/OrdersPage.html', {
+            'order': order,
+            'orderName': order.It_Name,
+            'orderKink': order.It_Kind,
+            'orderSize': order.It_Prise,
+            'orderDescription': order.It_Descrip,
+            'orderImages': order.F_Images,
+            'orderRate': order.F_Rate
+        })
+
+
+
 
 def ordertype(request):
     if request.method == "POST":
@@ -140,24 +357,18 @@ def checktype(request):
         except models.Customer.DoesNotExist:
             return render(request, 'Mubarak html files/checkResult.html', {
                 'WrongINput': 'Wrong INput',
-            })  
+            }) 
+    else:
+        return render(request, 'Mubarak html files/checkResult.html', {})  
+
+
+    
 
 
 
-def RestaurantsPage(request, id ):
-    Restaurants = Restaurant.objects.get(id=id)
-    return render(request, 'Mubarak html files/ManyToMany/restaurant.html', {
-        'restaurant':Restaurants,
-        'R_Image'   : Restaurants.R_Image,
-        'R_Name'    : Restaurants.R_Name,
-        'R_Type'    : Restaurants.R_Type,
-        'R_Email'   : Restaurants.R_Email,
-        'R_Phone'   : Restaurants.R_Phone,
-        'R_Rate'    : Restaurants.R_Rate,
-        'R_City'    : Restaurants.R_City,
-        'R_Area'    : Restaurants.R_Area,
-        'RImage_Cover': Restaurants.RImage_Cover
-    })
+
+
+
 
 
 
@@ -175,12 +386,18 @@ def testview(request, id):
         cobj.save()
         cobj.foods.add(restid)
         A = FoodItem.objects.all().filter(foods__id=id)
-    # print(foods)
-    print(A)
+        # print(A)
     return render(request, 'Mubarak html files/ManyToMany/restaurant.html', {
-        # 'foods' : foods,
-        'A'     : A
+        'A' : A ,
     })
+
+
+
+
+
+
+
+
 
 
 
